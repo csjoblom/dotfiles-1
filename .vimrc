@@ -40,6 +40,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-fugitive'
 Bundle 'jmcantrell/vim-virtualenv'
+Bundle 'ivanov/vim-ipython'
 Bundle 'coaxmetal/humblevundlebundle'
 
 "Bundle 'hdima/python-syntax'
@@ -162,6 +163,7 @@ let g:gitgutter_escape_grep = 1
 
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 
 " strip trailing whitespace on save
 function! <SID>StripTrailingWhitespaces()
