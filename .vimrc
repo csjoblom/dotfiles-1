@@ -65,7 +65,6 @@ set foldlevel=99
 set wildmenu
 set wildmode=longest:full,full
 set smartcase
-set ignorecase
 set wrap
 set textwidth=80
 set hlsearch
