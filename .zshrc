@@ -38,3 +38,4 @@ export GIT_EDITOR='vim'
 
 # some keys for reverse search
 bindkey -M vicmd '?' history-incremental-search-backward
+bindkey '^R' history-incremental-pattern-search-backward
