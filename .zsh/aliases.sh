@@ -5,7 +5,6 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 
 alias tmux='tmux -2'
-alias vim='mvim -v'
 #alias pg_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 #alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
