@@ -43,36 +43,60 @@ Bundle 'coaxmetal/humblevundlebundle'
 
 filetype plugin indent on
 
-" settings
+" general settings
 syntax on
 set encoding=utf-8
-set guifont=menlo\ for\ powerline:h12
-set laststatus=2
 set hidden
-set number
+set smartcase
+set mouse=a
+set noerrorbells
+set visualbell
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
+
+" folding
+set foldmethod=syntax
+set foldlevel=99
+
+" wildmenu stuff
+set wildmenu
+set wildmode=longest:full,full
+set wildignorecase
+
+" text
+set wrap
+set textwidth=80
+
+" search hightlighting
+set hlsearch
+set incsearch
 set smartindent
 set expandtab
 set shiftwidth=4 ts=8 softtabstop=4
 set shiftround
-set mouse=a
-set noerrorbells
-set visualbell
-set guioptions-=T "disable toolbar in gvim
-set guioptions-=r
-set guioptions-=L
-set foldmethod=syntax
-set foldlevel=99
-set wildmenu
-set wildmode=longest:full,full
-set smartcase
-set wrap
-set textwidth=80
-set hlsearch
-set incsearch
 
 " appearance
-let g:molokai_original = 1
+set number
+set laststatus=2
+set guifont=menlo\ for\ powerline:h12
+let g:molokai_original = 1 " this makes molokai mo betta
 colorscheme molokai_modified
+
+" completion
+set completeopt=longest,menuone
+set complete+=t
+
+" key mappings
+let mapleader = ","
+nnoremap ' `
+nnoremap ` '
+nnoremap \ :NERDTreeToggle<CR>
+nnoremap <leader>b :FufBuffer<CR>
+nnoremap <leader>u :GundoToggle<CR>
+nnoremap <leader>t :TagbarToggle<CR>
+nnoremap <space> :nohls<CR>
+nmap <leader><C-q> <plug>Kwbd
 
 " virtualenvs
 let g:virtualenv_directory='~/.virtualenvs'
@@ -88,12 +112,10 @@ let g:ctrlp_custom_ignore = {
     \ }
 
 " python mode settings
-let g:pymode_options = 0
-let g:pymode_lint = 0
-let g:pymode_virtualenv = 0 "this is handled by a separate plugin
+let g:pymode_options = 0 " disable the global options because we want textwrap
+let g:pymode_lint = 0 " let syntastic do linting
+let g:pymode_virtualenv = 0 " let the virtualenv bundle handle this
 let g:pymode_breakpoint = 0
-let g:pymode_lint_ignore = 'E501,E128,E231,E261,E401'
-let g:pymode_lint_checker = "pyflakes,pep8"
 let g:pymode_syntax_print_as_function = 1
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
@@ -101,10 +123,6 @@ let g:pymode_syntax_highlight_string_format = 1
 let g:pymode_syntax_highlight_builtin_objs = 1
 let g:pymode_indent = 1
 let g:pymode_run = 0
-
-" python syntax settings
-"let python_highlight_all = 1
-"let python_version_2 = 1 " disable for python 3, or run :Python2Syntax
 
 " syntastic settings
 let g:syntastic_always_populate_loc_list=1
@@ -118,40 +136,11 @@ let g:syntastic_mode_map = { 'mode': 'active',
 let g:syntastic_python_checkers=['pyflakes','flake8']
 let g:syntastic_python_flake8_args='--ignore=E501,E128,E231,E261,E401'
 
-" completion
-set completeopt=longest,menuone
-set complete+=t
-
-" remap some keys
-let mapleader = ","
-nnoremap ' `
-nnoremap ` '
-nnoremap \ :NERDTreeToggle<CR>
-nnoremap <leader>b :FufBuffer<CR>
-nnoremap <leader>u :GundoToggle<CR>
-nnoremap <leader>t :TagbarToggle<CR>
-nnoremap <space> :nohls<CR>
-nmap <leader><C-q> <plug>Kwbd
-
 " zencoding
 let g:use_zen_complete_tag = 1
 
 " NERDTree
 let NERDTreeIgnore = ['\.pyc$']
-
-"CSApprox stuff
-set t_Co=256
-let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
-
-" MiniBufExplorer
-let g:miniBufExpMapWindowNavVim = 1
-let g:miniBufExpMapWindowNavArrows = 1
-let g:miniBufExpMapCTabSwitchBufs = 1
-let g:miniBufExpModSelTarget = 1
-
-" filetype stuff
-au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
-au FileType python setlocal formatoptions-=t commentstring=#%s
 
 " gitugtter
 let g:gitgutter_escape_grep = 1
@@ -159,6 +148,14 @@ let g:gitgutter_escape_grep = 1
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+
+"CSApprox stuff
+set t_Co=256
+let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
+
+" filetype stuff
+au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
+au FileType python setlocal formatoptions-=t commentstring=#%s
 
 " strip trailing whitespace on save
 function! <SID>StripTrailingWhitespaces()
@@ -177,4 +174,3 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " autosave
 " set autowriteall
 " au FocusLost * silent! wa
-
