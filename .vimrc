@@ -13,6 +13,7 @@ Bundle 'vim-scripts/HTML-AutoCloseTag'
 Bundle 'vim-scripts/django.vim'
 Bundle 'vim-scripts/csv.vim'
 Bundle 'vim-scripts/scratch.vim'
+Bundle 'vim-scripts/indenthtml.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'majutsushi/tagbar'
@@ -152,6 +153,11 @@ let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 "CSApprox stuff
 set t_Co=256
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
+
+" html indentation
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
 
 " filetype stuff
 au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
