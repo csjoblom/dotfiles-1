@@ -15,6 +15,9 @@ Bundle 'vim-scripts/csv.vim'
 Bundle 'vim-scripts/scratch.vim'
 Bundle 'vim-scripts/indenthtml.vim'
 Bundle 'vim-scripts/XML-Folding'
+Bundle 'vim-scripts/DetectIndent'
+Bundle 'jmcantrell/vim-virtualenv'
+Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'majutsushi/tagbar'
@@ -39,7 +42,6 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-fugitive'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
-Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'gregsexton/MatchTag'
 Bundle 'coaxmetal/humblevundlebundle'
 
@@ -100,9 +102,9 @@ nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <space> :nohls<CR>
 nmap <leader><C-q> <plug>Kwbd
 
-" virtualenvs
-let g:virtualenv_directory='~/.virtualenvs'
-let g:virtualenv_auto_activate=1
+"detect indent
+let g:detectindent_preferred_expandtab = 1
+let g:detectindent_preferred_indent = 4
 
 " ctrl p
 let g:ctrlp_map = '<C-p>'
@@ -113,10 +115,14 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\v\.(pyc|scssc)$',
     \ }
 
+" virtualenv
+let g:virtualenv_directory='~/.virtualenvs/'
+let g:virtualenv_auto_activate=1
+
 " python mode settings
 let g:pymode_options = 0 " disable the global options because we want textwrap
 let g:pymode_lint = 0 " let syntastic do linting
-let g:pymode_virtualenv = 0 " let the virtualenv bundle handle this
+let g:pymode_virtualenv = 0
 let g:pymode_breakpoint = 0
 let g:pymode_syntax_print_as_function = 1
 let g:pymode_syntax = 1
