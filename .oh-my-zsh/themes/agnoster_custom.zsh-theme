@@ -133,7 +133,7 @@ prompt_virtualenv() {
     venv_name=`virtualenv_prompt_info`
     color='magenta'
     if [[ -n "$venv_name" ]]; then
-      echo "%{$fg[$color]%}$REVERSE_SEPARATOR%{$reset_color%}%{$bg[$color]%}%{$fg[black]%}$venv_name%{$reset_color%}"
+      echo "%{$fg[$color]%}$REVERSE_SEPARATOR%{$reset_color%}%{$bg[$color]%}%{$fg[black]%}$venv_name %{$reset_color%}"
     fi
 }
 
