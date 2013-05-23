@@ -12,7 +12,10 @@
 		},
 		"line_current_symbol": {
 			"contents": " "
-		}
+		},
+        "custom_vim.virtualenv": {
+            "before": "ⓔ  "
+        }
 	},
 	"segments": {
 		"left": [
@@ -25,16 +28,16 @@
 				"exclude_modes": ["nc"],
 				"priority": 10
 			},
+   		 	{
+	            "module": "custom_vim",
+	            "name": "virtualenv",
+                "priority": 50
+            },
 			{
 				"name": "branch",
 				"exclude_modes": ["nc"],
 				"priority": 30
 			},
-                        {
-                                "module": "powerline.segments.common",
-                                "name": "virtualenv",
-                                "priority": 50
-                        },
 			{
 				"name": "readonly_indicator",
 				"draw_soft_divider": false,

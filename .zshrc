@@ -30,7 +30,7 @@ export WORKON_HOME=~/.virtualenvs
 # source some aliases
 source ~/.zsh/aliases.sh
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/share/python:/usr/texbin:/usr/local/share/npm/bin/
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/share/python:/usr/local/share/npm/bin:/usr/texbin
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages
 
 # some other variables
