@@ -8,6 +8,8 @@ alias tmux='tmux -2'
 #alias pg_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 #alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
+alias rmpyc='find . -name "*.pyc" -exec rm -rf {} \;'
+
 
 # work (blueprint) aliases:
 export BLUEPRINT_HOME="$HOME/Workspace/bph_api/"
