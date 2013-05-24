@@ -6,7 +6,6 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'vim-scripts/CSApprox'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/HTML-AutoCloseTag'
@@ -47,6 +46,11 @@ Bundle 'gregsexton/MatchTag'
 Bundle 'coaxmetal/humblevundlebundle'
 
 filetype plugin indent on
+
+" activate powerline
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
 
 " general settings
 syntax on
