@@ -28,7 +28,7 @@ export WORKON_HOME=~/.virtualenvs
 # source /usr/local/share/python/virtualenvwrapper.sh
 
 # source some aliases
-source ~/.zsh/aliases.sh
+for f in ~/.zsh/*.sh; do source $f; done
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/share/python:/usr/local/share/npm/bin:/usr/texbin
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages
