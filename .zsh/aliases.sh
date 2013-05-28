@@ -3,10 +3,9 @@ alias ll='ls -lhA'
 
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
+alias vim='mvim -v'
 
 alias tmux='tmux -2'
-#alias pg_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-#alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 alias rmpyc='find . -name "*.pyc" -exec rm -rf {} \;'
 
