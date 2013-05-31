@@ -7,4 +7,6 @@ alias vim='mvim -v'
 
 alias tmux='tmux -2'
 
-alias rmpyc='find . -name "*.pyc" -exec rm -rf {} \;'
+function findrmext {
+    find . -name "*.$1" -exec rm -rf {} \;
+}
