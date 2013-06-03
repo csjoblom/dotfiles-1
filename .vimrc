@@ -15,6 +15,7 @@ Bundle 'vim-scripts/scratch.vim'
 Bundle 'vim-scripts/indenthtml.vim'
 Bundle 'vim-scripts/XML-Folding'
 Bundle 'vim-scripts/DetectIndent'
+Bundle 'elzr/vim-json'
 Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'kien/ctrlp.vim'
@@ -44,13 +45,15 @@ Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'gregsexton/MatchTag'
 Bundle 'coaxmetal/humblevundlebundle'
+Bundle 'maksimr/vim-jsbeautify'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 filetype plugin indent on
 
 " activate powerline
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
 
 " general settings
 syntax on
@@ -88,7 +91,7 @@ set shiftround
 " appearance
 set number
 set laststatus=2
-set guifont=menlo\ for\ powerline:h12
+set guifont=meslo\ lg\ s\ for\ powerline:h12
 let g:molokai_original = 1 " this makes molokai mo betta
 colorscheme molokai_modified
 
