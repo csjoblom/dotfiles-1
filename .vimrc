@@ -45,14 +45,14 @@ Bundle 'FuzzyFinder'
 Bundle 'gregsexton/MatchTag'
 Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'maksimr/vim-jsbeautify'
-"Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 filetype plugin indent on
 
 " activate powerline
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
 
 " general settings
 syntax on
@@ -137,7 +137,7 @@ let g:pymode_syntax_all = 1
 let g:pymode_syntax_highlight_string_format = 1
 let g:pymode_syntax_highlight_builtin_objs = 1
 let g:pymode_indent = 1
-let g:pymode_run = 0
+let g:pymode_run = 1
 
 " syntastic settings
 let g:syntastic_always_populate_loc_list=1
