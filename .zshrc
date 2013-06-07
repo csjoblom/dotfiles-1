@@ -19,13 +19,13 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git virtualenv virtualenvwrapper django python pip vi-mode brew fabric osx tmux)
+plugins=(git virtualenv django python vi-mode brew fabric osx tmux)
 
 source $ZSH/oh-my-zsh.sh
 
 # virtualenvwrapper
 export WORKON_HOME=~/.virtualenvs
-# source /usr/local/share/python/virtualenvwrapper.sh
+source /usr/local/bin/python/virtualenvwrapper.sh
 
 # source some aliases
 for f in ~/.zsh/*.sh; do source $f; done
@@ -34,7 +34,7 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/lo
 
 # make sure pythonpath is empty, python is an adult it can figure it out
 # also if its set it fucks up python3
-export PYTHONPATH=""
+unset PYTHONPATH
 
 # some other variables
 export GIT_EDITOR='vim'

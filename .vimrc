@@ -32,7 +32,6 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'mattn/zencoding-vim'
 Bundle 'Raimondi/delimitMate'
-Bundle 'ervandew/supertab'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdcommenter'
@@ -45,6 +44,9 @@ Bundle 'FuzzyFinder'
 Bundle 'gregsexton/MatchTag'
 Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'maksimr/vim-jsbeautify'
+Bundle 'Valloric/YouCompleteMe'
+"Bundle 'ervandew/supertab'
+Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 filetype plugin indent on
@@ -91,8 +93,9 @@ set shiftround
 set number
 set laststatus=2
 set guifont=meslo\ lg\ s\ for\ powerline:h12
-let g:molokai_original = 1 " this makes molokai mo betta
-colorscheme molokai_modified
+"let g:molokai_original = 1 " this makes molokai mo betta
+"colorscheme molokai_modified
+colorscheme Tomorrow-Night-Eighties-Custom
 
 " completion
 set completeopt=longest,menuone
@@ -138,6 +141,14 @@ let g:pymode_syntax_highlight_string_format = 1
 let g:pymode_syntax_highlight_builtin_objs = 1
 let g:pymode_indent = 1
 let g:pymode_run = 1
+let g:pymode_rope_vim_completion = 0 "use youcompleteme
+
+" ycm settings
+"let g:ycm_enable_autocomplete = 0
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_min_num_of_chars_for_completion = 2
 
 " syntastic settings
 let g:syntastic_always_populate_loc_list=1
@@ -148,7 +159,7 @@ let g:syntastic_warning_symbol='⚠'
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': ['javascript', 'python'],
                            \ 'passive_filetypes': ['html'] }
-let g:syntastic_python_checkers=['pyflakes','flake8']
+let g:syntastic_python_checkers=['pyflakes', 'flake8']
 let g:syntastic_python_flake8_args='--ignore=E501,E128,E231,E261,E401'
 
 " zencoding
@@ -161,8 +172,8 @@ let NERDTreeIgnore = ['\.pyc$']
 let g:gitgutter_escape_grep = 1
 
 " supertab
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+" let g:SuperTabDefaultCompletionType = 'context'
+" let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 
 "CSApprox stuff
 set t_Co=256
