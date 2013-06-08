@@ -25,7 +25,7 @@ source $ZSH/oh-my-zsh.sh
 
 # virtualenvwrapper
 export WORKON_HOME=~/.virtualenvs
-source /usr/local/bin/python/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper.sh
 
 # source some aliases
 for f in ~/.zsh/*.sh; do source $f; done
