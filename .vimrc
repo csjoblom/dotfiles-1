@@ -44,9 +44,10 @@ Bundle 'FuzzyFinder'
 Bundle 'gregsexton/MatchTag'
 Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'maksimr/vim-jsbeautify'
-"Bundle 'ervandew/supertab'
-"Bundle 'coaxmetal/YouCompleteMe'
-Bundle 'Valloric/YouCompleteMe'
+"Bundle 'zhaocai/linepower.vim'
+Bundle 'ervandew/supertab'
+Bundle 'davidhalter/jedi-vim'
+"Bundle 'Valloric/YouCompleteMe'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
@@ -141,15 +142,23 @@ let g:pymode_syntax_all = 1
 let g:pymode_syntax_highlight_string_format = 1
 let g:pymode_syntax_highlight_builtin_objs = 1
 let g:pymode_indent = 1
-let g:pymode_run = 1
-let g:pymode_rope_vim_completion = 0 "use youcompleteme
+let g:pymode_run = 0
+let g:pymode_rope_vim_completion = 0 "use jedi
+let g:pymode_rope_autocomplete_map = '<leader><C-space>'
 
 " ycm settings
 " let g:ycm_enable_autocomplete = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_min_num_of_chars_for_completion = 2
+"let g:ycm_seed_identifiers_with_syntax = 1
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_collect_identifiers_from_tags_files = 1
+"let g:ycm_min_num_of_chars_for_completion = 2
+
+" jedi
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#popup_select_first = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#rename_command = '<leader><C-r>' " don't rename, let rope do refactoring
 
 " syntastic settings
 let g:syntastic_always_populate_loc_list=1
@@ -173,8 +182,8 @@ let NERDTreeIgnore = ['\.pyc$']
 let g:gitgutter_escape_grep = 1
 
 " supertab
-" let g:SuperTabDefaultCompletionType = 'context'
-" let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 
 "CSApprox stuff
 set t_Co=256
