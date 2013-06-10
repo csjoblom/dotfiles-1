@@ -44,8 +44,9 @@ Bundle 'FuzzyFinder'
 Bundle 'gregsexton/MatchTag'
 Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'maksimr/vim-jsbeautify'
-Bundle 'Valloric/YouCompleteMe'
 "Bundle 'ervandew/supertab'
+"Bundle 'coaxmetal/YouCompleteMe'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
@@ -144,7 +145,7 @@ let g:pymode_run = 1
 let g:pymode_rope_vim_completion = 0 "use youcompleteme
 
 " ycm settings
-"let g:ycm_enable_autocomplete = 0
+" let g:ycm_enable_autocomplete = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
