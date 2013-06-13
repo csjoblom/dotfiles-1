@@ -44,12 +44,14 @@ Bundle 'FuzzyFinder'
 Bundle 'gregsexton/MatchTag'
 Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'maksimr/vim-jsbeautify'
-"Bundle 'zhaocai/linepower.vim'
 Bundle 'ervandew/supertab'
-Bundle 'davidhalter/jedi-vim'
-"Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+" disabled bundles
+"Bundle 'davidhalter/jedi-vim'
+
 
 filetype plugin indent on
 
@@ -77,11 +79,10 @@ set foldlevel=99
 " wildmenu stuff
 set wildmenu
 set wildmode=longest:full,full
-set wildignorecase
 
 " text
 set wrap
-set textwidth=80
+set textwidth=120
 
 " search hightlighting
 set hlsearch
@@ -95,13 +96,10 @@ set shiftround
 set number
 set laststatus=2
 set guifont=meslo\ lg\ s\ for\ powerline:h12
-"let g:molokai_original = 1 " this makes molokai mo betta
-"colorscheme molokai_modified
 colorscheme Tomorrow-Night-Eighties-Custom
 
 " completion
 set completeopt=longest,menuone
-set complete+=t
 
 " key mappings
 let mapleader = ","
@@ -144,21 +142,22 @@ let g:pymode_syntax_highlight_builtin_objs = 1
 let g:pymode_indent = 1
 let g:pymode_run = 0
 let g:pymode_rope_vim_completion = 0 "use jedi
-let g:pymode_rope_autocomplete_map = '<leader><C-space>'
+let g:pymode_rope_autocomplete_map = '<C-Tab>' "just make this mostly useless
 
 " ycm settings
 " let g:ycm_enable_autocomplete = 1
-"let g:ycm_seed_identifiers_with_syntax = 1
-"let g:ycm_autoclose_preview_window_after_completion = 1
-"let g:ycm_collect_identifiers_from_tags_files = 1
-"let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_collect_identifiers_from_tags_files = 0
+let g:ycm_min_num_of_chars_for_completion = 2
 
 " jedi
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#popup_select_first = 0
-let g:jedi#popup_on_dot = 0
-let g:jedi#rename_command = '<leader><C-r>' " don't rename, let rope do refactoring
+"let g:jedi#auto_vim_configuration = 0
+"let g:jedi#use_tabs_not_buffers = 0
+"let g:jedi#popup_select_first = 0
+"let g:jedi#popup_on_dot = 0
+"let g:jedi#show_function_definition = 0
+"let g:jedi#rename_command = '<leader><S-r>' " don't rename, let rope do refactoring
 
 " syntastic settings
 let g:syntastic_always_populate_loc_list=1
@@ -182,6 +181,7 @@ let NERDTreeIgnore = ['\.pyc$']
 let g:gitgutter_escape_grep = 1
 
 " supertab
+" this mostly doesn't work since ycm is active
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 
@@ -196,7 +196,6 @@ let g:html_indent_style1 = "inc"
 
 " filetype stuff
 au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
-au FileType python setlocal formatoptions-=t commentstring=#%s
 
 " strip trailing whitespace on save
 function! <SID>StripTrailingWhitespaces()
