@@ -198,18 +198,18 @@ let g:html_indent_style1 = "inc"
 au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
 
 " strip trailing whitespace on save
-function! <SID>StripTrailingWhitespaces()
-    "preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    "do the business:
-    %s/\s\+$//e
-    "restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+"function! <SID>StripTrailingWhitespaces()
+    ""preparation: save last search, and cursor position.
+    ""let _s=@/
+    ""let l = line(".")
+    ""let c = col(".")
+    ""do the business:
+    "%s/\s\+$//e
+    ""restore previous search history, and cursor position
+    ""let @/=_s
+    ""call cursor(l, c)
+"endfunction
+"autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " autosave
 " set autowriteall

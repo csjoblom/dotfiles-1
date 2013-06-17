@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="agnoster_custom"
+#ZSH_THEME="agnoster_custom"
 DEFAULT_USER="dbl"
 
 # Set to this to use case-sensitive completion
@@ -19,13 +19,17 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git virtualenv django python vi-mode brew fabric osx tmux)
+plugins=(git virtualenv virtualenvwrapper django python vi-mode brew fabric osx tmux)
 
+# run oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
+# activate powerline
+source ~/.zsh/powerline.zsh
+
 # virtualenvwrapper
-export WORKON_HOME=~/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+# export WORKON_HOME=~/.virtualenvs
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # source some aliases
 for f in ~/.zsh/*.sh; do source $f; done
