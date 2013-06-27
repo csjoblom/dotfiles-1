@@ -168,8 +168,8 @@ let g:syntastic_warning_symbol='⚠'
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': ['javascript', 'python'],
                            \ 'passive_filetypes': ['html'] }
-let g:syntastic_python_checkers=['pyflakes', 'flake8']
-let g:syntastic_python_flake8_args='--ignore=E501,E128,E231,E261,E401'
+let g:syntastic_python_checkers=['pyflakes', 'pep8']
+let g:syntastic_python_pep8_args='--ignore=E123,E124,E126,E128,E231,E261,E401,E501'
 
 " zencoding
 let g:use_zen_complete_tag = 1
