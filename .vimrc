@@ -106,6 +106,7 @@ let mapleader = ","
 nnoremap ' `
 nnoremap ` '
 nnoremap \ :NERDTreeToggle<CR>
+nnoremap <leader>\ :NERDTreeFind<CR>
 nnoremap <leader>b :FufBuffer<CR>
 nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>t :TagbarToggle<CR>
