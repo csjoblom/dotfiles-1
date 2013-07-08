@@ -44,21 +44,11 @@ Bundle 'FuzzyFinder'
 Bundle 'gregsexton/MatchTag'
 Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'maksimr/vim-jsbeautify'
-Bundle 'ervandew/supertab'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-
-" disabled bundles
-"Bundle 'davidhalter/jedi-vim'
-
+Bundle 'bling/vim-airline'
 
 filetype plugin indent on
-
-" activate powerline
-"python from powerline.vim import setup as powerline_setup
-"python powerline_setup()
-"python del powerline_setup
 
 " general settings
 syntax on
@@ -83,14 +73,14 @@ set wildmode=longest:full,full
 " text
 set wrap
 set textwidth=120
-
-" search hightlighting
-set hlsearch
-set incsearch
 set smartindent
 set expandtab
 set shiftwidth=4 ts=8 softtabstop=4
 set shiftround
+
+" search hightlighting
+set hlsearch
+set incsearch
 
 " appearance
 set number
@@ -112,6 +102,21 @@ nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <space> :nohls<CR>
 nmap <leader><C-q> <plug>Kwbd
+
+" airline
+let g:airline_enable_fugitive = 1
+let g:airline_enable_syntastic = 1
+let g:airline_enable_ctrlp = 1
+let g:airline_section_y = "%{virtualenv#statusline()}"
+let g:airline_theme = 'dark'
+let g:airline_left_sep = ' '
+let g:airline_left_alt_sep = ' '
+let g:airline_right_sep = ' '
+let g:airline_right_alt_sep = ' '
+let g:airline_fugitive_prefix = ' '
+let g:airline_readonly_symbol = ' '
+let g:airline_linecolumn_prefix = ' '
+
 
 "detect indent
 let g:detectindent_preferred_expandtab = 1
@@ -142,8 +147,7 @@ let g:pymode_syntax_highlight_string_format = 1
 let g:pymode_syntax_highlight_builtin_objs = 1
 let g:pymode_indent = 1
 let g:pymode_run = 0
-let g:pymode_rope_vim_completion = 0 "use jedi
-let g:pymode_rope_autocomplete_map = '<C-Tab>' "just make this mostly useless
+let g:pymode_rope_vim_completion = 0 "use YCM
 
 " ycm settings
 " let g:ycm_enable_autocomplete = 1
@@ -151,14 +155,6 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_collect_identifiers_from_tags_files = 0
 let g:ycm_min_num_of_chars_for_completion = 2
-
-" jedi
-"let g:jedi#auto_vim_configuration = 0
-"let g:jedi#use_tabs_not_buffers = 0
-"let g:jedi#popup_select_first = 0
-"let g:jedi#popup_on_dot = 0
-"let g:jedi#show_function_definition = 0
-"let g:jedi#rename_command = '<leader><S-r>' " don't rename, let rope do refactoring
 
 " syntastic settings
 let g:syntastic_always_populate_loc_list=1
@@ -181,11 +177,6 @@ let NERDTreeIgnore = ['\.pyc$']
 " gitugtter
 let g:gitgutter_escape_grep = 1
 
-" supertab
-" this mostly doesn't work since ycm is active
-let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-
 "CSApprox stuff
 set t_Co=256
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
@@ -197,6 +188,8 @@ let g:html_indent_style1 = "inc"
 
 " filetype stuff
 au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
+
+" disabled stuff
 
 " strip trailing whitespace on save
 "function! <SID>StripTrailingWhitespaces()
