@@ -44,21 +44,11 @@ Bundle 'FuzzyFinder'
 Bundle 'gregsexton/MatchTag'
 Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'maksimr/vim-jsbeautify'
-Bundle 'ervandew/supertab'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
-" disabled bundles
-"Bundle 'davidhalter/jedi-vim'
-
-
 filetype plugin indent on
-
-" activate powerline
-"python from powerline.vim import setup as powerline_setup
-"python powerline_setup()
-"python del powerline_setup
 
 " general settings
 syntax on
@@ -128,7 +118,7 @@ let g:ctrlp_custom_ignore = {
 
 " virtualenv
 let g:virtualenv_directory='~/.virtualenvs/'
-let g:virtualenv_auto_activate=1
+let g:virtualenv_auto_activate = 1
 
 " python mode settings
 let g:pymode_options = 0 " disable the global options because we want textwrap
@@ -142,8 +132,7 @@ let g:pymode_syntax_highlight_string_format = 1
 let g:pymode_syntax_highlight_builtin_objs = 1
 let g:pymode_indent = 1
 let g:pymode_run = 0
-let g:pymode_rope_vim_completion = 0 "use jedi
-let g:pymode_rope_autocomplete_map = '<C-Tab>' "just make this mostly useless
+let g:pymode_rope_vim_completion = 0 "use YCM
 
 " ycm settings
 " let g:ycm_enable_autocomplete = 1
@@ -151,14 +140,6 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_collect_identifiers_from_tags_files = 0
 let g:ycm_min_num_of_chars_for_completion = 2
-
-" jedi
-"let g:jedi#auto_vim_configuration = 0
-"let g:jedi#use_tabs_not_buffers = 0
-"let g:jedi#popup_select_first = 0
-"let g:jedi#popup_on_dot = 0
-"let g:jedi#show_function_definition = 0
-"let g:jedi#rename_command = '<leader><S-r>' " don't rename, let rope do refactoring
 
 " syntastic settings
 let g:syntastic_always_populate_loc_list=1
