@@ -133,6 +133,7 @@ let g:pymode_syntax_highlight_builtin_objs = 1
 let g:pymode_indent = 1
 let g:pymode_run = 0
 let g:pymode_rope_vim_completion = 0 "use YCM
+let g:pymode_rope_autocomplete_map = '<C-tab>'
 
 " ycm settings
 " let g:ycm_enable_autocomplete = 1
