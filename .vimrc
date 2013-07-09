@@ -104,18 +104,19 @@ nnoremap <space> :nohls<CR>
 nmap <leader><C-q> <plug>Kwbd
 
 " airline
-let g:airline_enable_fugitive = 1
+let g:airline_enable_fugitive = 0
 let g:airline_enable_syntastic = 1
 let g:airline_enable_ctrlp = 1
 let g:airline_section_y = "%{virtualenv#statusline()}"
 let g:airline_theme = 'dark'
-"let g:airline_left_sep = ' '
-"let g:airline_left_alt_sep = ' '
-"let g:airline_right_sep = ' '
-"let g:airline_right_alt_sep = ' '
-"let g:airline_fugitive_prefix = ' '
-"let g:airline_readonly_symbol = ' '
-"let g:airline_linecolumn_prefix = ' '
+let g:airline_powerline_fonts=1
+let g:airline_left_sep = ' '
+let g:airline_left_alt_sep = ' '
+let g:airline_right_sep = ' '
+let g:airline_right_alt_sep = ' '
+let g:airline_fugitive_prefix = ' '
+let g:airline_readonly_symbol = ' '
+let g:airline_linecolumn_prefix = ' '
 
 
 "detect indent
