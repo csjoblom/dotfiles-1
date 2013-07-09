@@ -109,13 +109,13 @@ let g:airline_enable_syntastic = 1
 let g:airline_enable_ctrlp = 1
 let g:airline_section_y = "%{virtualenv#statusline()}"
 let g:airline_theme = 'dark'
-let g:airline_left_sep = ' '
-let g:airline_left_alt_sep = ' '
-let g:airline_right_sep = ' '
-let g:airline_right_alt_sep = ' '
-let g:airline_fugitive_prefix = ' '
-let g:airline_readonly_symbol = ' '
-let g:airline_linecolumn_prefix = ' '
+"let g:airline_left_sep = ' '
+"let g:airline_left_alt_sep = ' '
+"let g:airline_right_sep = ' '
+"let g:airline_right_alt_sep = ' '
+"let g:airline_fugitive_prefix = ' '
+"let g:airline_readonly_symbol = ' '
+"let g:airline_linecolumn_prefix = ' '
 
 
 "detect indent
@@ -133,7 +133,7 @@ let g:ctrlp_custom_ignore = {
 
 " virtualenv
 let g:virtualenv_directory='~/.virtualenvs/'
-let g:virtualenv_auto_activate=1
+let g:virtualenv_auto_activate = 1
 
 " python mode settings
 let g:pymode_options = 0 " disable the global options because we want textwrap
@@ -148,6 +148,7 @@ let g:pymode_syntax_highlight_builtin_objs = 1
 let g:pymode_indent = 1
 let g:pymode_run = 0
 let g:pymode_rope_vim_completion = 0 "use YCM
+let g:pymode_rope_autocomplete_map = '<C-tab>'
 
 " ycm settings
 " let g:ycm_enable_autocomplete = 1
