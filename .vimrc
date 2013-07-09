@@ -104,12 +104,12 @@ nnoremap <space> :nohls<CR>
 nmap <leader><C-q> <plug>Kwbd
 
 " airline
-let g:airline_enable_fugitive = 0
+let g:airline_enable_fugitive = 1
 let g:airline_enable_syntastic = 1
 let g:airline_enable_ctrlp = 1
 let g:airline_section_y = "%{virtualenv#statusline()}"
-let g:airline_theme = 'dark'
-let g:airline_powerline_fonts=1
+let g:airline_theme = 'badwolf'
+let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = ' '
 let g:airline_right_sep = ' '
