@@ -19,7 +19,7 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git virtualenv virtualenvwrapper django python vi-mode brew fabric osx tmux)
+plugins=(git virtualenv virtualenvwrapper django python vi-mode brew fabric osx tmux go)
 
 # run oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -34,14 +34,15 @@ source ~/.zsh/powerline.zsh
 # source some aliases
 for f in ~/.zsh/*.sh; do source $f; done
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/share/python:/usr/local/share/npm/bin:/usr/texbin
+# some other variables
+export GIT_EDITOR='vim'
+export GOPATH=$HOME/go
+
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/share/python:/usr/local/share/npm/bin:/usr/texbin:$GOPATH/bin
 
 # make sure pythonpath is empty, python is an adult it can figure it out
 # also if its set it fucks up python3
 unset PYTHONPATH
-
-# some other variables
-export GIT_EDITOR='vim'
 
 # some keys for reverse search
 bindkey -M vicmd '?' history-incremental-search-backward

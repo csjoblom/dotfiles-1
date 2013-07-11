@@ -47,6 +47,8 @@ Bundle 'maksimr/vim-jsbeautify'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'bling/vim-airline'
+Bundle 'fsouza/go.vim'
+
 
 filetype plugin indent on
 
@@ -105,9 +107,8 @@ nmap <leader><C-q> <plug>Kwbd
 
 " airline
 let g:airline_enable_fugitive = 1
-let g:airline_enable_syntastic = 1
+let g:airline_enable_syntastic = 0
 let g:airline_enable_ctrlp = 1
-let g:airline_section_y = "%{virtualenv#statusline()}"
 let g:airline_theme = 'badwolf'
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ' '
