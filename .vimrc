@@ -47,7 +47,8 @@ Bundle 'maksimr/vim-jsbeautify'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'bling/vim-airline'
-Bundle 'fsouza/go.vim'
+Bundle 'jnwhiteh/vim-golang'
+Bundle 'Blackrush/vim-gocode'
 
 
 filetype plugin indent on
