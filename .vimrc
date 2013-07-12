@@ -110,7 +110,7 @@ nmap <leader><C-q> <plug>Kwbd
 let g:airline_enable_fugitive = 1
 let g:airline_enable_syntastic = 0
 let g:airline_enable_ctrlp = 1
-let g:airline_theme = 'badwolf'
+let g:airline_theme = 'tomorrow_night_eighties'
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = ' '
@@ -119,7 +119,6 @@ let g:airline_right_alt_sep = ' '
 let g:airline_fugitive_prefix = ' '
 let g:airline_readonly_symbol = ' '
 let g:airline_linecolumn_prefix = ' '
-
 
 "detect indent
 let g:detectindent_preferred_expandtab = 1
