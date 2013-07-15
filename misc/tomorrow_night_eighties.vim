@@ -1,5 +1,5 @@
 let s:N1 = [ '#2d2d2d' , '#99cc99' , 232 , 154 ] 
-let s:N2 = [ '#ffcc66' , '#45413b' , 222 , 238 ]
+let s:N2 = [ '#ffcc66' , '#515151' , 222 , 238 ]
 let s:N3 = [ '#f99157' , '#2d2d2d' , 121 , 235 ]
 let s:N4 = [ '#515151' , 241 ]                  
 
@@ -16,6 +16,7 @@ let s:PA = [ '#ffcc66' , 222 ]
 let s:RE = [ '#f2777a' , 211 ]                   
 
 let s:file = [ '#f99157' , s:N3[1] , 196 , s:N3[3] , '' ]
+let s:IA = [ s:N2[1], s:N3[1], s:N2[3], s:N3[3], '']
 
 
 let g:airline#themes#tomorrow_night_eighties#normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3, s:file)
@@ -24,8 +25,6 @@ let g:airline#themes#tomorrow_night_eighties#normal_modified = {
       \ 'info'           : [ s:N2[0]   , s:N4[0]   , s:N2[2]   , s:N4[1]   , ''     ] ,
       \ 'info_separator' : [ s:N4[0]   , s:N2[1]   , s:N4[1]   , s:N2[3]   , 'bold' ] ,
       \ 'statusline'     : [ s:V1[1]   , s:N2[1]   , s:V1[3]   , s:N2[3]   , ''     ] }
-let g:airline#themes#tomorrow_night_eighties#inactive = {
-      \ 'mode'           : [ s:N2[1]   , s:N3[1]   , s:N2[3]   , s:N3[3]   , ''     ] }
 
 
 let g:airline#themes#tomorrow_night_eighties#insert = airline#themes#generate_color_map(s:I1, s:I2, s:I3, s:file)
@@ -47,3 +46,6 @@ let g:airline#themes#tomorrow_night_eighties#visual = airline#themes#generate_co
 let g:airline#themes#tomorrow_night_eighties#visual_modified = {
       \ 'info_separator' : [ s:V2[1]   , s:V4[0]   , s:V2[3]   , s:V4[1]   , 'bold' ] ,
       \ 'statusline'     : [ s:V3[0]   , s:V4[0]   , s:V3[2]   , s:V4[1]   , ''     ] }
+
+
+let g:airline#themes#tomorrow_night_eighties#inactive = airline#themes#generate_color_map(s:IA, s:IA, s:IA, s:file)
