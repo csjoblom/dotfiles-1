@@ -40,7 +40,8 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Shougo/unite.vim'
 Bundle 'maksimr/vim-jsbeautify'
-Bundle 'Valloric/YouCompleteMe'
+Bundle 'ervandew/supertab'
+Bundle 'davidhalter/jedi-vim'
 Bundle 'bling/vim-airline'
 Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'jnwhiteh/vim-golang'
@@ -88,7 +89,7 @@ set guifont=meslo\ lg\ s\ for\ powerline:h12
 colorscheme Tomorrow-Night-Eighties-Custom
 
 " completion
-set completeopt=longest,menuone
+set completeopt=longest,menuone,preview
 
 " key mappings
 let mapleader = ","
@@ -147,23 +148,8 @@ let g:pymode_syntax_highlight_string_format = 1
 let g:pymode_syntax_highlight_builtin_objs = 1
 let g:pymode_indent = 1
 let g:pymode_run = 0
-let g:pymode_rope_vim_completion = 0 "use YCM
-let g:pymode_rope_autocomplete_map = '<C-Tab>'
-
-" ycm settings
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_collect_identifiers_from_tags_files = 0
-let g:ycm_min_num_of_chars_for_completion = 2
-let g:ycm_filetype_blacklist = {
-            \ 'html' : 1,
-            \ 'htmldjango' : 1,
-            \ 'text': 1,
-            \ 'vim' : 1,
-            \ 'unite': 1,
-            \}
-let g:ycm_key_detailed_diagnostics = ''
-let g:ycm_key_invoke_completion = '<C-Space>'
+let g:pymode_rope_vim_completion = 0 "use jedi
+let g:pymode_rope_autocomplete_map = '<C-c><Space>'
 
 " syntastic settings
 let g:syntastic_always_populate_loc_list=1
@@ -198,19 +184,34 @@ let g:html_indent_style1 = "auto"
 " filetype stuff
 au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
 
+" supertab
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+let g:SuperTabLongestEnhanced = 1
+let g:SuperTabCLosePreviewOnPopupClose = 1
+
+" jedi
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#popup_select_first = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#rename_command = ''
+let g:jedi#pydoc = ''
+let g:jedi#related_names_command = ''
+let g:jedi#autocompletion_command = ''
 
 " strip trailing whitespace on save
-function! <SID>StripTrailingWhitespaces()
-    "preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    "do the business:
-    %s/\s\+$//e
-    "restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
+"function! <SID>StripTrailingWhitespaces()
+    ""preparation: save last search, and cursor position.
+    "let _s=@/
+    "let l = line(".")
+    "let c = col(".")
+    ""do the business:
+    "%s/\s\+$//e
+    ""restore previous search history, and cursor position
+    "let @/=_s
+    "call cursor(l, c)
+"endfunction
 "autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " disabled stuff
