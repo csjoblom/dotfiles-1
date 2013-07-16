@@ -8,19 +8,19 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/CSApprox'
 Bundle 'vim-scripts/matchit.zip'
-Bundle 'vim-scripts/HTML-AutoCloseTag'
 Bundle 'vim-scripts/django.vim'
 Bundle 'vim-scripts/csv.vim'
 Bundle 'vim-scripts/scratch.vim'
 Bundle 'vim-scripts/indenthtml.vim'
 Bundle 'vim-scripts/XML-Folding'
 Bundle 'vim-scripts/DetectIndent'
+Bundle 'Raimondi/delimitMate'
+Bundle 'gregsexton/MatchTag'
 Bundle 'sjl/gundo.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'majutsushi/tagbar'
-Bundle 'flazz/vim-colorschemes'
 Bundle 'jimenezrick/vimerl'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'terryma/vim-multiple-cursors'
@@ -31,7 +31,6 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'marijnh/tern_for_vim'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'mattn/zencoding-vim'
-Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdcommenter'
@@ -39,14 +38,11 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-fugitive'
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-Bundle 'gregsexton/MatchTag'
-Bundle 'coaxmetal/humblevundlebundle'
+Bundle 'Shougo/unite.vim'
 Bundle 'maksimr/vim-jsbeautify'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'bling/vim-airline'
+Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'Blackrush/vim-gocode'
 
@@ -100,11 +96,13 @@ nnoremap ' `
 nnoremap ` '
 nnoremap \ :NERDTreeToggle<CR>
 nnoremap <leader>\ :NERDTreeFind<CR>
-nnoremap <leader>b :FufBuffer<CR>
+nnoremap <leader>b :Unite buffer<CR>
 nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <space> :nohls<CR>
-nmap <leader><C-q> <plug>Kwbd
+nnoremap <leader>kw :Kwbd<CR>
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 
 " airline
 let g:airline_enable_fugitive = 1
@@ -140,8 +138,8 @@ let g:virtualenv_auto_activate = 1
 " python mode settings
 let g:pymode_options = 0 " disable the global options because we want textwrap
 let g:pymode_lint = 0 " let syntastic do linting
-let g:pymode_virtualenv = 0
-let g:pymode_breakpoint = 0
+let g:pymode_virtualenv = 0 " use separate virtualenv
+let g:pymode_breakpoint = 0 " no this is annoying
 let g:pymode_syntax_print_as_function = 1
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
@@ -150,14 +148,22 @@ let g:pymode_syntax_highlight_builtin_objs = 1
 let g:pymode_indent = 1
 let g:pymode_run = 0
 let g:pymode_rope_vim_completion = 0 "use YCM
-let g:pymode_rope_autocomplete_map = '<C-tab>'
+let g:pymode_rope_autocomplete_map = '<C-Tab>'
 
 " ycm settings
-" let g:ycm_enable_autocomplete = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_collect_identifiers_from_tags_files = 0
 let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_filetype_blacklist = {
+            \ 'html' : 1,
+            \ 'htmldjango' : 1,
+            \ 'text': 1,
+            \ 'vim' : 1,
+            \ 'unite': 1,
+            \}
+let g:ycm_key_detailed_diagnostics = ''
+let g:ycm_key_invoke_completion = '<C-Space>'
 
 " syntastic settings
 let g:syntastic_always_populate_loc_list=1
@@ -186,27 +192,28 @@ let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 
 " html indentation
 let g:html_indent_inctags = "html,body,head,tbody"
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
+let g:html_indent_script1 = "auto"
+let g:html_indent_style1 = "auto"
 
 " filetype stuff
 au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
 
-" disabled stuff
 
 " strip trailing whitespace on save
-"function! <SID>StripTrailingWhitespaces()
-    ""preparation: save last search, and cursor position.
-    ""let _s=@/
-    ""let l = line(".")
-    ""let c = col(".")
-    ""do the business:
-    "%s/\s\+$//e
-    ""restore previous search history, and cursor position
-    ""let @/=_s
-    ""call cursor(l, c)
-"endfunction
+function! <SID>StripTrailingWhitespaces()
+    "preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    "do the business:
+    %s/\s\+$//e
+    "restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
 "autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+" disabled stuff
 
 " autosave
 " set autowriteall
