@@ -185,11 +185,14 @@ let g:html_indent_style1 = "auto"
 au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
 
 " supertab
-let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
 let g:SuperTabLongestEnhanced = 1
-let g:SuperTabCLosePreviewOnPopupClose = 1
+let g:SuperTabClosePreviewOnPopupClose = 1
+au FileType * " if theres an omnifunc use that -> keyword, otherwise use context
+            \ if &omnifunc != '' |
+            \   call SuperTabChain(&omnifunc, "<c-p>") |
+            \   call SuperTabSetDefaultCompletionType("context") |
+            \ endif
 
 " jedi
 let g:jedi#auto_vim_configuration = 0
