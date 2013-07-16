@@ -100,6 +100,7 @@ nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <space> :nohls<CR>
 nnoremap <leader>kw :Kwbd<CR>
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " airline
 let g:airline_enable_fugitive = 1
