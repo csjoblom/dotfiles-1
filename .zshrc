@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-#ZSH_THEME="agnoster_custom"
+ZSH_THEME="agnoster_custom"
 DEFAULT_USER="dbl"
 
 # Set to this to use case-sensitive completion
@@ -25,7 +25,7 @@ plugins=(git virtualenv virtualenvwrapper django python vi-mode brew fabric osx 
 source $ZSH/oh-my-zsh.sh
 
 # activate powerline
-source ~/.zsh/powerline.zsh
+# source ~/.zsh/powerline.zsh
 
 # virtualenvwrapper
 # export WORKON_HOME=~/.virtualenvs

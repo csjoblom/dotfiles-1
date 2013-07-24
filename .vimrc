@@ -67,6 +67,7 @@ set foldlevel=99
 " wildmenu stuff
 set wildmenu
 set wildmode=longest:full,full
+set wildignore+=*.so,*.swp,*.scssc,*.pyc
 
 " text
 set wrap
@@ -87,7 +88,7 @@ set guifont=meslo\ lg\ s\ for\ powerline:h12
 colorscheme Tomorrow-Night-Eighties-Custom
 
 " completion
-set completeopt=preview,longest,menuone
+set completeopt=longest,menuone
 
 " key mappings
 let mapleader = ","
@@ -183,7 +184,7 @@ au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker=
 
 " ycm settings
 let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_collect_identifiers_from_tags_files = 0
 let g:ycm_min_num_of_chars_for_completion = 2
