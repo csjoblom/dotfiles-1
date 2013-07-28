@@ -39,6 +39,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimfiler.vim'
 Bundle 'maksimr/vim-jsbeautify'
 Bundle 'bling/vim-airline'
 Bundle 'Valloric/YouCompleteMe'
@@ -107,7 +108,7 @@ nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:airline_enable_fugitive = 1
 let g:airline_enable_syntastic = 0
 let g:airline_enable_ctrlp = 1
-let g:airline_theme = 'tomorrow_night_eighties'
+let g:airline_theme = 'wombat'
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = ' '
