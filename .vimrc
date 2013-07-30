@@ -18,7 +18,7 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'gregsexton/MatchTag'
 Bundle 'sjl/gundo.vim'
 Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'kien/ctrlp.vim'
+Bundle 'rking/ag.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'jimenezrick/vimerl'
@@ -38,27 +38,59 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-fugitive'
+Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/unite.vim'
 Bundle 'maksimr/vim-jsbeautify'
 Bundle 'bling/vim-airline'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'Blackrush/vim-gocode'
+Bundle 'coaxmetal/humblevundlebundle'
+
+" both YouCompleteMe and vimproc.vim need to be compiled manually after installation
 
 filetype plugin indent on
+
+" functions
+function! EnsureExists(path)
+    if !isdirectory(expand(a:path))
+      call mkdir(expand(a:path))
+    endif
+endfunction
+
+function! StripTrailingWhitespaces()
+    "preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    "do the business:
+    %s/\s\+$//e
+    "restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+call EnsureExists('~/.vim/.cache')
+
+" strip trailing whitespace on save
+"autocmd BufWritePre * :call StripTrailingWhitespaces()
 
 " general settings
 syntax on
 set encoding=utf-8
 set hidden
+set autoread
 set smartcase
 set mouse=a
+set mousehide
 set noerrorbells
-set visualbell
+set novisualbell
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
+set timeoutlen=300
+set ttimeoutlen=50
+set scrolloff=1
 
 " folding
 set foldmethod=syntax
@@ -74,7 +106,7 @@ set wrap
 set textwidth=120
 set smartindent
 set expandtab
-set shiftwidth=4 ts=8 softtabstop=4
+set shiftwidth=4 ts=4 softtabstop=4
 set shiftround
 
 " search hightlighting
@@ -94,12 +126,9 @@ set completeopt=longest,menuone
 let mapleader = ","
 nnoremap ' `
 nnoremap ` '
-nnoremap \ :NERDTreeToggle<CR>
-nnoremap <leader>\ :NERDTreeFind<CR>
-nnoremap <leader>b :Unite buffer<CR>
 nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>t :TagbarToggle<CR>
-nnoremap <space> :nohls<CR>
+nnoremap <Space> :nohls<CR>
 nnoremap <leader>kw :Kwbd<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
@@ -117,18 +146,27 @@ let g:airline_branch = ' '
 let g:airline_readonly_symbol = ' '
 let g:airline_linecolumn_prefix = ' '
 
-"detect indent
+" detect indent
+" not sure if this plugin works or not...
 let g:detectindent_preferred_expandtab = 1
 let g:detectindent_preferred_indent = 4
 
-" ctrl p
-let g:ctrlp_map = '<C-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-    \ 'file': '\v\.(pyc|scssc)$',
-    \ }
+" unite
+" most of these are from https://github.com/bling/dotvim, I'm not entirely sure what all of them do.
+" they look reasonable though
+let g:unite_data_directory='~/.vim/.cache/unite'
+let g:unite_source_rec_max_cache_files=5000
+let g:unite_prompt='» '
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#set_profile('files', 'smartcase', 1)
+let g:unite_source_grep_command='ag'
+let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
+let g:unite_source_grep_recursive_opt=''
+nnoremap <C-p> :Unite -start-insert file_rec/async<CR>
+nnoremap <leader>b :Unite buffer<CR>
+nnoremap <C-u>f :Unite file_mru buffer<CR>
+nnoremap <C-u>g :Unite grep:.<CR>
 
 " virtualenv
 let g:virtualenv_directory='~/.virtualenvs/'
@@ -166,6 +204,9 @@ let g:use_zen_complete_tag = 1
 
 " NERDTree
 let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeBookmarksFile='~/.vim/.cache/NERDTreeBookmarks'
+nnoremap \ :NERDTreeToggle<CR>
+nnoremap <leader>\ :NERDTreeFind<CR>
 
 " gitugtter
 let g:gitgutter_escape_grep = 1
@@ -199,22 +240,6 @@ let g:ycm_filetype_blacklist = {
             \}
 let g:ycm_key_detailed_diagnostics = ''
 let g:ycm_key_invoke_completion = '<C-Space>'
-
-" strip trailing whitespace on save
-"function! <SID>StripTrailingWhitespaces()
-    ""preparation: save last search, and cursor position.
-    "let _s=@/
-    "let l = line(".")
-    "let c = col(".")
-    ""do the business:
-    "%s/\s\+$//e
-    ""restore previous search history, and cursor position
-    "let @/=_s
-    "call cursor(l, c)
-"endfunction
-"autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-
-" disabled stuff
 
 " autosave
 " set autowriteall
