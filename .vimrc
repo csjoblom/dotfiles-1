@@ -84,7 +84,7 @@ set smartcase
 set mouse=a
 set mousehide
 set noerrorbells
-set novisualbell
+set visualbell
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
