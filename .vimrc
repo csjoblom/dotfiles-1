@@ -25,7 +25,7 @@ Bundle 'jimenezrick/vimerl'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'jmcantrell/vim-virtualenv'
-Bundle 'ivanov/vim-ipython'
+"Bundle 'ivanov/vim-ipython'
 Bundle 'klen/python-mode'
 Bundle 'pangloss/vim-javascript'
 Bundle 'marijnh/tern_for_vim'
@@ -80,7 +80,6 @@ syntax on
 set encoding=utf-8
 set hidden
 set autoread
-set smartcase
 set mouse=a
 set mousehide
 set noerrorbells
@@ -88,9 +87,11 @@ set visualbell
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
-set timeoutlen=300
+set timeoutlen=500
 set ttimeoutlen=50
 set scrolloff=1
+set backupdir=~/.vim/.cache,~/.tmp,/var/tmp,/tmp
+set directory=~/.vim/.cache/,~/.tmp,/var/tmp,/tmp
 
 " folding
 set foldmethod=syntax
@@ -103,15 +104,16 @@ set wildignore+=*.so,*.swp,*.scssc,*.pyc
 
 " text
 set wrap
-set textwidth=120
+set textwidth=99
 set smartindent
 set expandtab
 set shiftwidth=4 ts=4 softtabstop=4
 set shiftround
 
-" search hightlighting
+" searching
 set hlsearch
 set incsearch
+set smartcase
 
 " appearance
 set number
@@ -128,9 +130,9 @@ nnoremap ' `
 nnoremap ` '
 nnoremap <leader>u :GundoToggle<CR>
 nnoremap <leader>t :TagbarToggle<CR>
-nnoremap <Space> :nohls<CR>
 nnoremap <leader>kw :Kwbd<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nmap <silent> <leader>n :silent :nohlsearch<CR>
 
 " airline
 let g:airline_enable_branch = 1
@@ -147,19 +149,18 @@ let g:airline_readonly_symbol = ' '
 let g:airline_linecolumn_prefix = ' '
 
 " detect indent
-" not sure if this plugin works or not...
+" not sure if this plugin works or not
 let g:detectindent_preferred_expandtab = 1
 let g:detectindent_preferred_indent = 4
 
 " unite
-" most of these are from https://github.com/bling/dotvim, I'm not entirely sure what all of them do.
-" they look reasonable though
 let g:unite_data_directory='~/.vim/.cache/unite'
 let g:unite_source_rec_max_cache_files=5000
 let g:unite_prompt='» '
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#set_profile('files', 'smartcase', 1)
+call unite#set_profile('files', 'ignorecase', 1)
 let g:unite_source_grep_command='ag'
 let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
 let g:unite_source_grep_recursive_opt=''
@@ -177,15 +178,14 @@ let g:pymode_options = 0 " disable the global options because we want textwrap
 let g:pymode_lint = 0 " let syntastic do linting
 let g:pymode_virtualenv = 0 " use separate virtualenv
 let g:pymode_breakpoint = 0 " no this is annoying
-let g:pymode_syntax_print_as_function = 1
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
-let g:pymode_syntax_highlight_string_format = 1
-let g:pymode_syntax_highlight_builtin_objs = 1
 let g:pymode_indent = 1
 let g:pymode_run = 0
+let g:pymode_rope = 1
+let g:pymode_rope_enable_autoimport = 0
+let g:pymode_rope_autoimport_generate = 0
 let g:pymode_rope_vim_completion = 0 "use jedi
-let g:pymode_rope_autocomplete_map = '<C-c><Space>'
 
 " syntastic settings
 let g:syntastic_always_populate_loc_list=1
