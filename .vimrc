@@ -25,7 +25,7 @@ Bundle 'jimenezrick/vimerl'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'jmcantrell/vim-virtualenv'
-"Bundle 'ivanov/vim-ipython'
+Bundle 'ivanov/vim-ipython'
 Bundle 'klen/python-mode'
 Bundle 'pangloss/vim-javascript'
 Bundle 'marijnh/tern_for_vim'
@@ -70,7 +70,7 @@ function! StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
-call EnsureExists('~/.vim/.cache')
+call EnsureExists("$HOME/.vim/.cache")
 
 " strip trailing whitespace on save
 "autocmd BufWritePre * :call StripTrailingWhitespaces()
@@ -154,11 +154,14 @@ let g:detectindent_preferred_expandtab = 1
 let g:detectindent_preferred_indent = 4
 
 " unite
-let g:unite_data_directory='~/.vim/.cache/unite'
+let g:unite_data_directory="~/.vim/.cache/unite"
 let g:unite_source_rec_max_cache_files=5000
+let g:unite_source_file_mru_limit = 200
 let g:unite_prompt='» '
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
+"call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async',
+            \ 'matchers', 'matcher_fuzzy')
 call unite#set_profile('files', 'smartcase', 1)
 call unite#set_profile('files', 'ignorecase', 1)
 let g:unite_source_grep_command='ag'
@@ -170,7 +173,7 @@ nnoremap <C-u>f :Unite file_mru buffer<CR>
 nnoremap <C-u>g :Unite grep:.<CR>
 
 " virtualenv
-let g:virtualenv_directory='~/.virtualenvs/'
+let g:virtualenv_directory="~/.virtualenvs/"
 let g:virtualenv_auto_activate = 1
 
 " python mode settings
@@ -204,7 +207,7 @@ let g:use_zen_complete_tag = 1
 
 " NERDTree
 let NERDTreeIgnore = ['\.pyc$']
-let NERDTreeBookmarksFile='~/.vim/.cache/NERDTreeBookmarks'
+let NERDTreeBookmarksFile="~/.vim/.cache/NERDTreeBookmarks"
 nnoremap \ :NERDTreeToggle<CR>
 nnoremap <leader>\ :NERDTreeFind<CR>
 
