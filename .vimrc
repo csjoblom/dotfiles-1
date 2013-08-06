@@ -138,7 +138,7 @@ nmap <silent> <leader>n :silent :nohlsearch<CR>
 let g:airline_enable_branch = 1
 let g:airline_enable_syntastic = 0
 let g:airline_enable_ctrlp = 1
-let g:airline_theme = 'wombat'
+let g:airline_theme = 'tomorrow'
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = ' '
@@ -158,10 +158,11 @@ let g:unite_data_directory="~/.vim/.cache/unite"
 let g:unite_source_rec_max_cache_files=5000
 let g:unite_source_file_mru_limit = 200
 let g:unite_prompt='» '
-"call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
-call unite#custom_source('file,file/new,buffer,file_rec,file_rec/async',
-            \ 'matchers', 'matcher_fuzzy')
+call unite#custom_source('file_rec,file_rec/async', 'filters',
+		\ ['converter_relative_word', 'matcher_default',
+		\  'sorter_default', 'converter_relative_abbr'])
 call unite#set_profile('files', 'smartcase', 1)
 call unite#set_profile('files', 'ignorecase', 1)
 let g:unite_source_grep_command='ag'
@@ -169,7 +170,7 @@ let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
 let g:unite_source_grep_recursive_opt=''
 nnoremap <C-p> :Unite -start-insert file_rec/async<CR>
 nnoremap <leader>b :Unite buffer<CR>
-nnoremap <C-u>f :Unite file_mru buffer<CR>
+nnoremap <C-u>f :Unite file_mru<CR>
 nnoremap <C-u>g :Unite grep:.<CR>
 
 " virtualenv
@@ -189,6 +190,7 @@ let g:pymode_rope = 1
 let g:pymode_rope_enable_autoimport = 0
 let g:pymode_rope_autoimport_generate = 0
 let g:pymode_rope_vim_completion = 0 "use jedi
+let g:pymode_rope_autocomplete_map = '<C-c>rcp'
 
 " syntastic settings
 let g:syntastic_always_populate_loc_list=1
