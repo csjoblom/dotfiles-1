@@ -54,7 +54,7 @@ filetype plugin indent on
 " functions
 function! EnsureExists(path)
     if !isdirectory(expand(a:path))
-      call mkdir(expand(a:path))
+        call mkdir(expand(a:path))
     endif
 endfunction
 
@@ -99,7 +99,7 @@ set foldlevel=99
 
 " wildmenu stuff
 set wildmenu
-set wildmode=longest:full,full
+set wildmode=list:longest:full,full
 set wildignore+=*.so,*.swp,*.scssc,*.pyc
 
 " text
@@ -136,8 +136,8 @@ nmap <silent> <leader>n :silent :nohlsearch<CR>
 
 " airline
 let g:airline_enable_branch = 1
-let g:airline_enable_syntastic = 0
-let g:airline_enable_ctrlp = 1
+let g:airline_enable_syntastic = 1
+let g:airline_enable_ctrlp = 0
 let g:airline_theme = 'tomorrow'
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ' '
@@ -161,8 +161,8 @@ let g:unite_prompt='» '
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#custom_source('file_rec,file_rec/async', 'filters',
-		\ ['converter_relative_word', 'matcher_default',
-		\  'sorter_default', 'converter_relative_abbr'])
+            \ ['converter_relative_word', 'matcher_default',
+            \  'sorter_default', 'converter_relative_abbr'])
 call unite#set_profile('files', 'smartcase', 1)
 call unite#set_profile('files', 'ignorecase', 1)
 let g:unite_source_grep_command='ag'
@@ -199,8 +199,8 @@ let g:syntastic_check_on_wq=1
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': ['javascript', 'python'],
-                           \ 'passive_filetypes': ['html'] }
+            \ 'active_filetypes': ['javascript', 'python'],
+            \ 'passive_filetypes': ['html'] }
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_flake8_args='--ignore=E123,E124,E126,E128,E231,E261,E401,E501'
 
