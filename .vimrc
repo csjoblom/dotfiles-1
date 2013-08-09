@@ -16,7 +16,7 @@ Bundle 'vim-scripts/XML-Folding'
 Bundle 'vim-scripts/DetectIndent'
 Bundle 'Raimondi/delimitMate'
 Bundle 'gregsexton/MatchTag'
-Bundle 'sjl/gundo.vim'
+Bundle 'mbbill/undotree'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'rking/ag.vim'
 Bundle 'mileszs/ack.vim'
@@ -36,7 +36,6 @@ Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/unite.vim'
@@ -116,9 +115,11 @@ set incsearch
 set smartcase
 
 " appearance
+set noshowmode
 set number
 set laststatus=2
 set guifont=meslo\ lg\ s\ for\ powerline:h12
+set t_Co=256
 colorscheme Tomorrow-Night-Eighties-Custom
 
 " completion
@@ -126,18 +127,27 @@ set completeopt=longest,menuone
 
 " key mappings
 let mapleader = ","
-nnoremap ' `
-nnoremap ` '
-nnoremap <leader>u :GundoToggle<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader>kw :Kwbd<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nmap <silent> <leader>n :silent :nohlsearch<CR>
+nnoremap <silent> <leader>n :silent :nohlsearch<CR>
+
+" navigation
+nnoremap [q :cprevious<CR>
+nnoremap ]q :cnext<CR>
+nnoremap [Q :cfirst<CR>
+nnoremap ]Q :clast<CR>
+nnoremap [l :lprevious<CR>
+nnoremap ]l :lnext<CR>
+nnoremap [L :lfirst<CR>
+nnoremap ]L :llast<CR>
+nnoremap ]h :GitGutterNextHunk<CR>
+nnoremap [h :GitGutterPrevHunk<CR>
 
 " airline
 let g:airline_enable_branch = 1
 let g:airline_enable_syntastic = 1
-let g:airline_enable_ctrlp = 0
 let g:airline_theme = 'tomorrow'
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ' '
@@ -176,6 +186,7 @@ nnoremap <C-u>g :Unite grep:.<CR>
 " virtualenv
 let g:virtualenv_directory="~/.virtualenvs/"
 let g:virtualenv_auto_activate = 1
+let g:virtualenv_stl_format = '%n'
 
 " python mode settings
 let g:pymode_options = 0 " disable the global options because we want textwrap
@@ -217,7 +228,6 @@ nnoremap <leader>\ :NERDTreeFind<CR>
 let g:gitgutter_escape_grep = 1
 
 "CSApprox stuff
-set t_Co=256
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 
 " html indentation
