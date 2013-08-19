@@ -57,7 +57,7 @@ function! EnsureExists(path)
     endif
 endfunction
 
-function! StripTrailingWhitespaces()
+function! StripTrailingWhitespace()
     "preparation: save last search, and cursor position.
     let _s=@/
     let l = line(".")
@@ -69,10 +69,10 @@ function! StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
-call EnsureExists("$HOME/.vim/.cache")
-
 " strip trailing whitespace on save
-"autocmd BufWritePre * :call StripTrailingWhitespaces()
+autocmd FileType python,javascript autocmd BufWritePre * :call StripTrailingWhitespace()
+
+call EnsureExists("$HOME/.vim/.cache")
 
 " general settings
 syntax on
@@ -180,6 +180,7 @@ let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
 let g:unite_source_grep_recursive_opt=''
 nnoremap <C-p> :Unite -start-insert file_rec/async<CR>
 nnoremap <leader>b :Unite buffer<CR>
+nnoremap <C-u>b :Unite buffer<CR>
 nnoremap <C-u>f :Unite file_mru<CR>
 nnoremap <C-u>g :Unite grep:.<CR>
 
@@ -193,6 +194,7 @@ let g:pymode_options = 0 " disable the global options because we want textwrap
 let g:pymode_lint = 0 " let syntastic do linting
 let g:pymode_virtualenv = 0 " use separate virtualenv
 let g:pymode_breakpoint = 0 " no this is annoying
+let g:pymode_utils_whitespaces = 0 " doin this elsewhere
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_indent = 1
@@ -211,7 +213,7 @@ let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_mode_map = { 'mode': 'active',
             \ 'active_filetypes': ['javascript', 'python'],
-            \ 'passive_filetypes': ['html'] }
+            \ 'passive_filetypes': ['html', 'scss', 'sass'] }
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_flake8_args='--ignore=E123,E124,E126,E128,E231,E261,E401,E501'
 
