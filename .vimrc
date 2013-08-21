@@ -57,6 +57,14 @@ function! EnsureExists(path)
     endif
 endfunction
 
+function! RelativeNumberToggle()
+    if(&relativenumber == 1)
+        set norelativenumber
+    else
+        set relativenumber
+    endif
+endfunc
+
 function! StripTrailingWhitespace()
     "preparation: save last search, and cursor position.
     let _s=@/
@@ -132,6 +140,7 @@ nnoremap <leader>t :TagbarToggle<CR>
 nnoremap <leader>kw :Kwbd<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <silent> <leader>n :silent :nohlsearch<CR>
+nnoremap <silent> <leader>r :silent :call RelativeNumberToggle()<CR>
 
 " navigation
 nnoremap [q :cprevious<CR>
