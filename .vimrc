@@ -168,9 +168,9 @@ let g:airline_readonly_symbol = ' '
 let g:airline_linecolumn_prefix = ' '
 
 " detect indent
-" not sure if this plugin works or not
 let g:detectindent_preferred_expandtab = 1
 let g:detectindent_preferred_indent = 4
+au BufEnter * silent! :DetectIndent<CR>
 
 " unite
 let g:unite_data_directory="~/.vim/.cache/unite"
@@ -187,8 +187,10 @@ call unite#set_profile('files', 'ignorecase', 1)
 let g:unite_source_grep_command='ag'
 let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
 let g:unite_source_grep_recursive_opt=''
+let g:unite_source_history_yank_enable = 1
 nnoremap <C-p> :Unite -start-insert file_rec/async<CR>
-nnoremap <leader>b :Unite buffer<CR>
+nnoremap <leader>b :Unite buffer file_mru<CR>
+nnoremap <C-u>y :Unite history/yank<CR>
 nnoremap <C-u>b :Unite buffer<CR>
 nnoremap <C-u>f :Unite file_mru<CR>
 nnoremap <C-u>g :Unite grep:.<CR>
