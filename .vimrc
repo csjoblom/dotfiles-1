@@ -22,7 +22,6 @@ Bundle 'rking/ag.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'jimenezrick/vimerl'
-Bundle 'airblade/vim-gitgutter'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'ivanov/vim-ipython'
@@ -42,6 +41,7 @@ Bundle 'Shougo/unite.vim'
 Bundle 'maksimr/vim-jsbeautify'
 Bundle 'bling/vim-airline'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'mhinz/vim-signify'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'Blackrush/vim-gocode'
 Bundle 'coaxmetal/humblevundlebundle'
@@ -151,12 +151,11 @@ nnoremap [l :lprevious<CR>
 nnoremap ]l :lnext<CR>
 nnoremap [L :lfirst<CR>
 nnoremap ]L :llast<CR>
-nnoremap ]h :GitGutterNextHunk<CR>
-nnoremap [h :GitGutterPrevHunk<CR>
 
 " airline
-let g:airline_enable_branch = 1
-let g:airline_enable_syntastic = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#virtualenv#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
 let g:airline_theme = 'tomorrow'
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ' '
@@ -166,6 +165,19 @@ let g:airline_right_alt_sep = ' '
 let g:airline_branch = ' '
 let g:airline_readonly_symbol = ' '
 let g:airline_linecolumn_prefix = ' '
+let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n'  : 'N',
+      \ 'i'  : 'I',
+      \ 'R'  : 'R',
+      \ 'c'  : 'C',
+      \ 'v'  : 'V',
+      \ 'V'  : 'V',
+      \ '' : 'V',
+      \ 's'  : 'S',
+      \ 'S'  : 'S',
+      \ '' : 'S',
+      \ }
 
 " detect indent
 let g:detectindent_preferred_expandtab = 1
@@ -237,8 +249,9 @@ let NERDTreeBookmarksFile="~/.vim/.cache/NERDTreeBookmarks"
 nnoremap \ :NERDTreeToggle<CR>
 nnoremap <leader>\ :NERDTreeFind<CR>
 
-" gitugtter
-let g:gitgutter_escape_grep = 1
+" signify
+let g:signify_mapping_next_hunk = ']h'
+let g:signify_mapping_prev_hunk = '[h'
 
 "CSApprox stuff
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
