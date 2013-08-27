@@ -27,11 +27,9 @@ Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'ivanov/vim-ipython'
 Bundle 'klen/python-mode'
 Bundle 'pangloss/vim-javascript'
-Bundle 'marijnh/tern_for_vim'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
@@ -42,9 +40,11 @@ Bundle 'maksimr/vim-jsbeautify'
 Bundle 'bling/vim-airline'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'mhinz/vim-signify'
+Bundle 'scrooloose/syntastic'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'Blackrush/vim-gocode'
 Bundle 'coaxmetal/humblevundlebundle'
+" Bundle 'marijnh/tern_for_vim'
 
 " both YouCompleteMe and vimproc.vim need to be compiled manually after installation
 
@@ -212,6 +212,9 @@ let g:virtualenv_directory="~/.virtualenvs/"
 let g:virtualenv_auto_activate = 1
 let g:virtualenv_stl_format = '%n'
 
+" signify
+let g:signify_sign_overwrite = 0
+
 " python mode settings
 let g:pymode_options = 0 " disable the global options because we want textwrap
 let g:pymode_lint = 0 " let syntastic do linting
@@ -248,10 +251,6 @@ let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeBookmarksFile="~/.vim/.cache/NERDTreeBookmarks"
 nnoremap \ :NERDTreeToggle<CR>
 nnoremap <leader>\ :NERDTreeFind<CR>
-
-" signify
-let g:signify_mapping_next_hunk = ']h'
-let g:signify_mapping_prev_hunk = '[h'
 
 "CSApprox stuff
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
