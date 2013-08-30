@@ -25,7 +25,8 @@ Bundle 'jimenezrick/vimerl'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'ivanov/vim-ipython'
-Bundle 'klen/python-mode'
+Bundle 'tmhedberg/SimpylFold'
+" Bundle 'klen/python-mode'
 Bundle 'pangloss/vim-javascript'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'mattn/emmet-vim'
@@ -44,6 +45,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'Blackrush/vim-gocode'
 Bundle 'coaxmetal/humblevundlebundle'
+Bundle 'hdima/python-syntax'
 " Bundle 'marijnh/tern_for_vim'
 
 " both YouCompleteMe and vimproc.vim need to be compiled manually after installation
@@ -96,7 +98,7 @@ set guioptions-=r
 set guioptions-=L
 set timeoutlen=500
 set ttimeoutlen=50
-set scrolloff=1
+set scrolloff=2
 set backupdir=~/.vim/.cache,~/.tmp,/var/tmp,/tmp
 set directory=~/.vim/.cache/,~/.tmp,/var/tmp,/tmp
 
@@ -111,11 +113,11 @@ set wildignore+=*.so,*.swp,*.scssc,*.pyc
 
 " text
 set wrap
-set textwidth=99
 set smartindent
 set expandtab
 set shiftwidth=4 ts=4 softtabstop=4
 set shiftround
+"set textwidth=99
 
 " searching
 set hlsearch
@@ -125,6 +127,7 @@ set smartcase
 " appearance
 set noshowmode
 set number
+set relativenumber
 set laststatus=2
 set guifont=meslo\ lg\ s\ for\ powerline:h12
 set t_Co=256
@@ -136,7 +139,8 @@ set completeopt=longest,menuone
 " key mappings
 let mapleader = ","
 nnoremap <leader>u :UndotreeToggle<CR>
-nnoremap <leader>t :TagbarToggle<CR>
+nnoremap <leader>T :TagbarToggle<CR>
+nnoremap <leader>t :TagbarOpenAutoClose<CR>
 nnoremap <leader>kw :Kwbd<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <silent> <leader>n :silent :nohlsearch<CR>
@@ -216,19 +220,25 @@ let g:virtualenv_stl_format = '%n'
 let g:signify_sign_overwrite = 0
 
 " python mode settings
-let g:pymode_options = 0 " disable the global options because we want textwrap
-let g:pymode_lint = 0 " let syntastic do linting
-let g:pymode_virtualenv = 0 " use separate virtualenv
-let g:pymode_breakpoint = 0 " no this is annoying
-let g:pymode_utils_whitespaces = 0 " doin this elsewhere
+" disable most of it (replaced with other plugins)
+" Keeping for rope refactoring and syntax
+let g:pymode_options = 0
+let g:pymode_lint = 0
+let g:pymode_virtualenv = 0
+let g:pymode_breakpoint = 0
+let g:pymode_utils_whitespaces = 0
+let g:pymode_folding = 0
+let g:pymode_run = 0
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
+let g:pymode_syntax_print_as_function = 1
 let g:pymode_indent = 1
-let g:pymode_run = 0
 let g:pymode_rope = 1
+let g:pymode_rope_auto_project = 1
+let g:pymode_rope_guess_project = 1
 let g:pymode_rope_enable_autoimport = 0
 let g:pymode_rope_autoimport_generate = 0
-let g:pymode_rope_vim_completion = 0 "use jedi
+let g:pymode_rope_vim_completion = 0
 let g:pymode_rope_autocomplete_map = '<C-c>rcp'
 
 " syntastic settings
