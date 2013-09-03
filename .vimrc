@@ -6,6 +6,8 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+
+" general
 Bundle 'vim-scripts/CSApprox'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/django.vim'
@@ -15,40 +17,49 @@ Bundle 'vim-scripts/indenthtml.vim'
 Bundle 'vim-scripts/XML-Folding'
 Bundle 'vim-scripts/DetectIndent'
 Bundle 'Raimondi/delimitMate'
-Bundle 'gregsexton/MatchTag'
 Bundle 'mbbill/undotree'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'rking/ag.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'majutsushi/tagbar'
-Bundle 'jimenezrick/vimerl'
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'jmcantrell/vim-virtualenv'
-Bundle 'ivanov/vim-ipython'
-Bundle 'tmhedberg/SimpylFold'
-" Bundle 'klen/python-mode'
-Bundle 'pangloss/vim-javascript'
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'mattn/emmet-vim'
 Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/unite.vim'
-Bundle 'maksimr/vim-jsbeautify'
 Bundle 'bling/vim-airline'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'mhinz/vim-signify'
-Bundle 'scrooloose/syntastic'
+Bundle 'coaxmetal/humblevundlebundle'
+
+" python
+Bundle 'jmcantrell/vim-virtualenv'
+Bundle 'ivanov/vim-ipython'
+Bundle 'tmhedberg/SimpylFold'
+Bundle 'hdima/python-syntax'
+" Bundle 'klen/python-mode'
+
+" go
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'Blackrush/vim-gocode'
-Bundle 'coaxmetal/humblevundlebundle'
-Bundle 'hdima/python-syntax'
+
+" javascript
+Bundle 'pangloss/vim-javascript'
+Bundle 'maksimr/vim-jsbeautify'
 " Bundle 'marijnh/tern_for_vim'
 
-" both YouCompleteMe and vimproc.vim need to be compiled manually after installation
+" other
+Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'jimenezrick/vimerl'
+Bundle 'mattn/emmet-vim'
+Bundle 'gregsexton/MatchTag'
+
+" note: both YouCompleteMe and vimproc.vim need to be compiled manually after installation
+
 
 filetype plugin indent on
 
@@ -262,16 +273,13 @@ let NERDTreeBookmarksFile="~/.vim/.cache/NERDTreeBookmarks"
 nnoremap \ :NERDTreeToggle<CR>
 nnoremap <leader>\ :NERDTreeFind<CR>
 
-"CSApprox stuff
+" CSApprox
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 
 " html indentation
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "auto"
 let g:html_indent_style1 = "auto"
-
-" filetype stuff
-au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
 
 " ycm settings
 let g:ycm_seed_identifiers_with_syntax = 1
@@ -290,6 +298,9 @@ let g:ycm_filetype_blacklist = {
             \}
 let g:ycm_key_detailed_diagnostics = ''
 let g:ycm_key_invoke_completion = '<C-Space>'
+
+" css folding
+au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
 
 " autosave
 " set autowriteall
