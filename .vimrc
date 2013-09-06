@@ -7,14 +7,10 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-" general
+" general/filetype agnostic
 Bundle 'vim-scripts/CSApprox'
 Bundle 'vim-scripts/matchit.zip'
-Bundle 'vim-scripts/django.vim'
-Bundle 'vim-scripts/csv.vim'
 Bundle 'vim-scripts/scratch.vim'
-Bundle 'vim-scripts/indenthtml.vim'
-Bundle 'vim-scripts/XML-Folding'
 Bundle 'vim-scripts/DetectIndent'
 Bundle 'Raimondi/delimitMate'
 Bundle 'mbbill/undotree'
@@ -24,7 +20,6 @@ Bundle 'mileszs/ack.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
@@ -34,14 +29,16 @@ Bundle 'Shougo/unite.vim'
 Bundle 'bling/vim-airline'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'mhinz/vim-signify'
+Bundle 'scrooloose/syntastic'
 Bundle 'coaxmetal/humblevundlebundle'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
 
 " python
 Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'ivanov/vim-ipython'
-Bundle 'tmhedberg/SimpylFold'
-Bundle 'hdima/python-syntax'
-" Bundle 'klen/python-mode'
+Bundle 'klen/python-mode'
+Bundle 'vim-scripts/django.vim'
 
 " go
 Bundle 'jnwhiteh/vim-golang'
@@ -57,6 +54,9 @@ Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'jimenezrick/vimerl'
 Bundle 'mattn/emmet-vim'
 Bundle 'gregsexton/MatchTag'
+Bundle 'vim-scripts/indenthtml.vim'
+Bundle 'vim-scripts/XML-Folding'
+Bundle 'vim-scripts/csv.vim'
 
 " note: both YouCompleteMe and vimproc.vim need to be compiled manually after installation
 
@@ -156,6 +156,8 @@ nnoremap <leader>kw :Kwbd<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <silent> <leader>n :silent :nohlsearch<CR>
 nnoremap <silent> <leader>r :silent :call RelativeNumberToggle()<CR>
+nmap <silent> <leader>k <plug>DashSearch
+nmap <silent> <leader>K <plug>DashGlobalSearch
 
 " navigation
 nnoremap [q :cprevious<CR>
@@ -238,8 +240,8 @@ let g:pymode_lint = 0
 let g:pymode_virtualenv = 0
 let g:pymode_breakpoint = 0
 let g:pymode_utils_whitespaces = 0
-let g:pymode_folding = 0
 let g:pymode_run = 0
+let g:pymode_folding = 1
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_syntax_print_as_function = 1
