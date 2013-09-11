@@ -38,7 +38,7 @@ for f in ~/.zsh/*.sh; do source $f; done
 export GIT_EDITOR='vim'
 export GOPATH=$HOME/go
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/share/python:/usr/local/share/npm/bin:/usr/texbin:$GOPATH/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/share/npm/bin:/usr/texbin:$GOPATH/bin
 
 # make sure pythonpath is empty, python is an adult it can figure it out
 # also if its set it fucks up python3
