@@ -222,6 +222,17 @@ nnoremap <C-u>b :Unite buffer<CR>
 nnoremap <C-u>f :Unite file_mru<CR>
 nnoremap <C-u>g :Unite grep:.<CR>
 
+au FileType unite call s:unite_buffer_settings()
+function! s:unite_buffer_settings()
+    setl norelativenumber
+    let unite = unite#get_current_unite()
+    if unite.buffer_name =~# '^search'
+        nnoremap <silent><buffer><expr> r unite#do_action('replace')
+    else
+        nnoremap <silent><buffer><expr> r unite#do_action('rename')
+    endif
+endfunction
+
 " virtualenv
 let g:virtualenv_directory="~/.virtualenvs/"
 let g:virtualenv_auto_activate = 1
