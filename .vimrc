@@ -31,8 +31,11 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'mhinz/vim-signify'
 Bundle 'scrooloose/syntastic'
 Bundle 'coaxmetal/humblevundlebundle'
+Bundle 'embear/vim-localvimrc'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/gist-vim'
 
 " python
 Bundle 'jmcantrell/vim-virtualenv'
