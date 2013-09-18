@@ -49,8 +49,7 @@ Bundle 'Blackrush/vim-gocode'
 
 " javascript
 Bundle 'pangloss/vim-javascript'
-Bundle 'maksimr/vim-jsbeautify'
-" Bundle 'marijnh/tern_for_vim'
+Bundle 'marijnh/tern_for_vim'
 
 " other
 Bundle 'cakebaker/scss-syntax.vim'
@@ -58,7 +57,6 @@ Bundle 'jimenezrick/vimerl'
 Bundle 'mattn/emmet-vim'
 Bundle 'gregsexton/MatchTag'
 Bundle 'vim-scripts/indenthtml.vim'
-Bundle 'vim-scripts/XML-Folding'
 Bundle 'vim-scripts/csv.vim'
 
 " note: both YouCompleteMe and vimproc.vim need to be compiled manually after installation
@@ -291,7 +289,7 @@ nnoremap <leader>\ :NERDTreeFind<CR>
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 
 " html indentation
-let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_inctags = "html,body,head,tbody,li"
 let g:html_indent_script1 = "auto"
 let g:html_indent_style1 = "auto"
 
