@@ -36,6 +36,7 @@ Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
+" Bundle 'Shougo/vimfiler.vim'
 
 " python
 Bundle 'jmcantrell/vim-virtualenv'
@@ -198,7 +199,7 @@ let g:airline_mode_map = {
 " detect indent
 let g:detectindent_preferred_expandtab = 1
 let g:detectindent_preferred_indent = 4
-au BufEnter * silent! :DetectIndent<CR>
+autocmd BufNewFile,BufRead * :DetectIndent
 
 " unite
 let g:unite_data_directory="~/.vim/.cache/unite"
