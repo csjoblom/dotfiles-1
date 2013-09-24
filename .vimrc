@@ -106,7 +106,7 @@ set mouse=a
 set mousehide
 set noerrorbells
 set visualbell
-set guioptions=egmc
+set guioptions=gmc
 set timeoutlen=500
 set ttimeoutlen=50
 set scrolloff=2
