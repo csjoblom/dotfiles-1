@@ -217,12 +217,13 @@ let g:unite_source_grep_command='ag'
 let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
 let g:unite_source_grep_recursive_opt=''
 let g:unite_source_history_yank_enable = 1
-nnoremap <C-p> :Unite -start-insert file_rec/async<CR>
-nnoremap <leader>b :Unite buffer file_mru<CR>
-nnoremap <C-u>y :Unite history/yank<CR>
-nnoremap <C-u>b :Unite buffer<CR>
-nnoremap <C-u>f :Unite file_mru<CR>
-nnoremap <C-u>g :Unite grep:.<CR>
+nnoremap <C-p>p :Unite -start-insert file_rec/async<CR>
+nnoremap <C-p>y :Unite history/yank<CR>
+nnoremap <C-p>b :Unite buffer<CR>
+nnoremap <C-p>f :Unite file<CR>
+nnoremap <C-p>r :Unite file_mru<CR>
+nnoremap <C-p>j :Unite jump<CR>
+nnoremap <C-p>g :Unite grep:.<CR>
 
 au FileType unite call s:unite_buffer_settings()
 function! s:unite_buffer_settings()
