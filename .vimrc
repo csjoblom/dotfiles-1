@@ -36,6 +36,7 @@ Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
+Bundle 'yonchu/accelerated-smooth-scroll'
 " Bundle 'Shougo/vimfiler.vim'
 
 " python
@@ -149,6 +150,7 @@ set completeopt=longest,menuone
 
 " key mappings
 let mapleader = ","
+let g:C_Ctrl_j = 'off' "disable global mapping for a linefeed
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>T :TagbarToggle<CR>
 nnoremap <leader>t :TagbarOpenAutoClose<CR>
@@ -156,6 +158,8 @@ nnoremap <leader>kw :Kwbd<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <silent> <leader>n :silent :nohlsearch<CR>
 nnoremap <silent> <leader>r :silent :call RelativeNumberToggle()<CR>
+noremap <C-Y> 3<C-Y>
+noremap <C-E> 3<C-E>
 nmap <silent> <leader>k <plug>DashSearch
 nmap <silent> <leader>K <plug>DashGlobalSearch
 
@@ -217,13 +221,15 @@ let g:unite_source_grep_command='ag'
 let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
 let g:unite_source_grep_recursive_opt=''
 let g:unite_source_history_yank_enable = 1
-nnoremap <C-p>p :Unite -start-insert file_rec/async<CR>
-nnoremap <C-p>y :Unite history/yank<CR>
-nnoremap <C-p>b :Unite buffer<CR>
-nnoremap <C-p>f :Unite file<CR>
-nnoremap <C-p>r :Unite file_mru<CR>
-nnoremap <C-p>j :Unite jump<CR>
-nnoremap <C-p>g :Unite grep:.<CR>
+nnoremap <leader>b :Unite buffer<CR>
+nnoremap <C-p> :Unite -start-insert file_rec/async<CR>
+nnoremap <C-j>p :Unite -start-insert file_rec/async<CR>
+nnoremap <C-j>y :Unite history/yank<CR>
+nnoremap <C-j>b :Unite buffer<CR>
+nnoremap <C-j>f :Unite file<CR>
+nnoremap <C-j>r :Unite file_mru<CR>
+nnoremap <C-j>j :Unite jump<CR>
+nnoremap <C-j>g :Unite grep:.<CR>
 
 au FileType unite call s:unite_buffer_settings()
 function! s:unite_buffer_settings()
@@ -243,6 +249,9 @@ let g:virtualenv_stl_format = '%n'
 
 " signify
 let g:signify_sign_overwrite = 0
+
+"emmet
+let g:user_emmet_leader_key = '<C-k>'
 
 " python mode settings
 " disable most of it (replaced with other plugins)
@@ -278,9 +287,6 @@ let g:syntastic_mode_map = { 'mode': 'active',
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_flake8_args='--ignore=E123,E124,E126,E128,E231,E261,E401,E501'
 
-" zencoding
-let g:use_zen_complete_tag = 1
-
 " NERDTree
 let NERDTreeIgnore = ['\.pyc$']
 let NERDTreeBookmarksFile="~/.vim/.cache/NERDTreeBookmarks"
@@ -312,6 +318,7 @@ let g:ycm_filetype_blacklist = {
             \}
 let g:ycm_key_detailed_diagnostics = ''
 let g:ycm_key_invoke_completion = '<C-Space>'
+
 
 " css folding
 au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
