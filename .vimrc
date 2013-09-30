@@ -227,7 +227,7 @@ nnoremap <C-j>p :Unite -start-insert file_rec/async<CR>
 nnoremap <C-j>y :Unite history/yank<CR>
 nnoremap <C-j>b :Unite buffer<CR>
 nnoremap <C-j>f :Unite file file/new<CR>
-nnoremap <C-j>ff :UniteWithBufferDir file file/new<CR>
+nnoremap <C-j>F :UniteWithBufferDir file file/new<CR>
 nnoremap <C-j>r :Unite file_mru<CR>
 nnoremap <C-j>j :Unite jump<CR>
 nnoremap <C-j>g :Unite grep:.<CR>
