@@ -36,7 +36,6 @@ Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
-Bundle 'yonchu/accelerated-smooth-scroll'
 " Bundle 'Shougo/vimfiler.vim'
 
 " python
