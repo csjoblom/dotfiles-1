@@ -3,7 +3,6 @@
     "sub": true,
     "strict": true,
     "node" : true,
-    "es5": true,
     "boss": true,
     "curly": true,
     "eqeqeq": true,
