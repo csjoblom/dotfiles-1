@@ -27,20 +27,21 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/unite.vim'
 Bundle 'bling/vim-airline'
+"Bundle 'coaxmetal/YouCompleteMe'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'mhinz/vim-signify'
 Bundle 'scrooloose/syntastic'
-Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'embear/vim-localvimrc'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
-" Bundle 'Shougo/vimfiler.vim'
+"Bundle 'ervandew/supertab'
 
 " python
 Bundle 'jmcantrell/vim-virtualenv'
-Bundle 'ivanov/vim-ipython'
+" Bundle 'ivanov/vim-ipython'
 Bundle 'klen/python-mode'
 Bundle 'vim-scripts/django.vim'
 
@@ -57,6 +58,7 @@ Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'jimenezrick/vimerl'
 Bundle 'mattn/emmet-vim'
 Bundle 'gregsexton/MatchTag'
+Bundle 'c9s/vimomni.vim'
 Bundle 'vim-scripts/indenthtml.vim'
 Bundle 'vim-scripts/csv.vim'
 
@@ -153,14 +155,14 @@ let g:C_Ctrl_j = 'off' "disable global mapping for a linefeed
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>T :TagbarToggle<CR>
 nnoremap <leader>t :TagbarOpenAutoClose<CR>
-nnoremap <leader>kw :Kwbd<CR>
+nnoremap <leader>W :Kwbd<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <silent> <leader>n :silent :nohlsearch<CR>
-nnoremap <silent> <leader>r :silent :call RelativeNumberToggle()<CR>
+nnoremap <silent> <leader>n :nohlsearch<CR>
+nnoremap <silent> <leader>r :call RelativeNumberToggle()<CR>
 noremap <C-Y> 3<C-Y>
 noremap <C-E> 3<C-E>
-nmap <silent> <leader>k <plug>DashSearch
-nmap <silent> <leader>K <plug>DashGlobalSearch
+map <silent> <leader>k <plug>DashSearch
+map <silent> <leader>K <plug>DashGlobalSearch
 
 " navigation
 nnoremap [q :cprevious<CR>
@@ -253,6 +255,11 @@ let g:signify_sign_overwrite = 0
 "emmet
 let g:user_emmet_leader_key = '<C-k>'
 
+" supertab
+"let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+"let g:SuperTabLongestEnhanced = 1
+"let g:SuperTabClosePreviewOnPopupClose = 1
+
 " python mode settings
 " disable most of it (replaced with other plugins)
 " Keeping for rope refactoring and syntax
@@ -312,7 +319,6 @@ let g:ycm_filetype_blacklist = {
             \ 'htmldjango' : 1,
             \ 'markdown' : 1,
             \ 'text': 1,
-            \ 'vim' : 1,
             \ 'note' : 1,
             \ 'unite': 1,
             \}
