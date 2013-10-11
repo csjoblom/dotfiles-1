@@ -41,9 +41,8 @@ Bundle 'mattn/gist-vim'
 
 " python
 Bundle 'jmcantrell/vim-virtualenv'
-" Bundle 'ivanov/vim-ipython'
 Bundle 'klen/python-mode'
-Bundle 'vim-scripts/django.vim'
+Bundle 'ivanov/vim-ipython'
 
 " go
 Bundle 'jnwhiteh/vim-golang'
