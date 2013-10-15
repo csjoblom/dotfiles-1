@@ -29,7 +29,6 @@ Bundle 'Shougo/unite.vim'
 Bundle 'bling/vim-airline'
 "Bundle 'coaxmetal/YouCompleteMe'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'mhinz/vim-signify'
 Bundle 'scrooloose/syntastic'
 Bundle 'embear/vim-localvimrc'
@@ -37,7 +36,9 @@ Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
+Bundle 'SirVer/ultisnips'
 "Bundle 'ervandew/supertab'
+Bundle 'coaxmetal/humblevundlebundle'
 
 " python
 Bundle 'jmcantrell/vim-virtualenv'
@@ -231,6 +232,7 @@ nnoremap <C-j>F :UniteWithBufferDir file file/new<CR>
 nnoremap <C-j>r :Unite file_mru<CR>
 nnoremap <C-j>j :Unite jump<CR>
 nnoremap <C-j>g :Unite grep:.<CR>
+nnoremap <C-j>s :Unite ultisnips<CR>
 
 au FileType unite call s:unite_buffer_settings()
 function! s:unite_buffer_settings()
@@ -311,7 +313,7 @@ let g:html_indent_style1 = "auto"
 let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_collect_identifiers_from_tags_files = 0
+let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_filetype_blacklist = {
             \ 'html' : 1,
@@ -323,6 +325,14 @@ let g:ycm_filetype_blacklist = {
             \}
 let g:ycm_key_detailed_diagnostics = ''
 let g:ycm_key_invoke_completion = '<C-Space>'
+
+" utlisnips
+" it needs a binding even thogbuh I don't use those, so just something that
+" wont be used
+let g:UltiSnipsExpandTrigger="<C-tab>"
+let g:UltiSnipsListSnippets="<C-D-k>"
+let g:UltiSnipsJumpForwardTrigger="<C-tab>"
+let g:UltiSnipsJumpBackwardTrigger="<C-S-tab>"
 
 
 " css folding
