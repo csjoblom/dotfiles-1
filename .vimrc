@@ -114,6 +114,7 @@ set ttimeoutlen=50
 set scrolloff=2
 set backupdir=~/.vim/.cache,~/.tmp,/var/tmp,/tmp
 set directory=~/.vim/.cache/,~/.tmp,/var/tmp,/tmp
+set tags+=.tags
 
 " folding
 set foldmethod=syntax
@@ -210,18 +211,22 @@ autocmd BufNewFile,BufRead * :DetectIndent
 let g:unite_data_directory="~/.vim/.cache/unite"
 let g:unite_source_rec_max_cache_files=5000
 let g:unite_source_file_mru_limit = 200
+let g:unite_source_history_yank_enable = 1
 let g:unite_prompt='» '
+let g:unite_source_grep_command='ag'
+let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
+let g:unite_source_grep_recursive_opt=''
+" let g:unite_source_file_rec_async_command='ag --nocolor --nogroup -g'
+" let g:unite_source_rec_async_command=g:unite_source_file_rec_async_command
+call unite#set_profile('files', 'smartcase', 1)
+call unite#set_profile('files', 'ignorecase', 1)
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#custom_source('file_rec,file_rec/async', 'filters',
             \ ['converter_relative_word', 'matcher_default',
             \  'sorter_default', 'converter_relative_abbr'])
-call unite#set_profile('files', 'smartcase', 1)
-call unite#set_profile('files', 'ignorecase', 1)
-let g:unite_source_grep_command='ag'
-let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
-let g:unite_source_grep_recursive_opt=''
-let g:unite_source_history_yank_enable = 1
+call unite#custom_source('file_rec,file_rec/async', 'ignore_pattern', '\.scssc$')
+
 nnoremap <leader>b :Unite buffer<CR>
 nnoremap <C-p> :Unite -start-insert file_rec/async<CR>
 nnoremap <C-j>p :Unite -start-insert file_rec/async<CR>
