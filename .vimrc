@@ -237,12 +237,6 @@ nnoremap <C-j>s :Unite ultisnips<CR>
 au FileType unite call s:unite_buffer_settings()
 function! s:unite_buffer_settings()
     setl norelativenumber
-    let unite = unite#get_current_unite()
-    if unite.buffer_name =~# '^search'
-        nnoremap <silent><buffer><expr> r unite#do_action('replace')
-    else
-        nnoremap <silent><buffer><expr> r unite#do_action('rename')
-    endif
 endfunction
 
 " virtualenv
