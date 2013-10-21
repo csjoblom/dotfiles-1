@@ -216,8 +216,7 @@ let g:unite_prompt='» '
 let g:unite_source_grep_command='ag'
 let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
 let g:unite_source_grep_recursive_opt=''
-" let g:unite_source_file_rec_async_command='ag --nocolor --nogroup -g'
-" let g:unite_source_rec_async_command=g:unite_source_file_rec_async_command
+let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
 call unite#set_profile('files', 'smartcase', 1)
 call unite#set_profile('files', 'ignorecase', 1)
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
