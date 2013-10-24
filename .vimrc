@@ -25,7 +25,8 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Shougo/vimproc.vim'
-Bundle 'Shougo/unite.vim'
+" Bundle 'Shougo/unite.vim'
+Bundle 'coaxmetal/unite.vim'
 Bundle 'bling/vim-airline'
 "Bundle 'coaxmetal/YouCompleteMe'
 Bundle 'Valloric/YouCompleteMe'
@@ -224,7 +225,7 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#custom_source('file_rec,file_rec/async', 'filters',
             \ ['converter_relative_word', 'matcher_default',
             \  'sorter_default', 'converter_relative_abbr'])
-call unite#custom_source('file_rec,file_rec/async', 'ignore_pattern', '\.scssc$')
+call unite#custom_source('file_rec,file_rec/async', 'sorters', ['sorter_rank', 'sorter_word'])
 
 nnoremap <leader>b :Unite buffer<CR>
 nnoremap <C-p> :Unite -start-insert file_rec/async<CR>
