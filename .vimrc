@@ -333,9 +333,12 @@ let g:UltiSnipsListSnippets="<C-D-k>"
 let g:UltiSnipsJumpForwardTrigger="<C-tab>"
 let g:UltiSnipsJumpBackwardTrigger="<C-S-tab>"
 
-
 " css folding
 au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
+
+" tagbar
+let g:tagbar_foldlevel = 1
+let g:tagbar_autoshowtag = 1
 
 " autosave
 " set autowriteall
