@@ -25,10 +25,9 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Shougo/vimproc.vim'
-" Bundle 'Shougo/unite.vim'
+Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'coaxmetal/unite.vim'
 Bundle 'bling/vim-airline'
-"Bundle 'coaxmetal/YouCompleteMe'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'mhinz/vim-signify'
 Bundle 'scrooloose/syntastic'
@@ -38,8 +37,10 @@ Bundle 'rizzatti/dash.vim'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'SirVer/ultisnips'
+Bundle 'vim-scripts/Conque-Shell'
 "Bundle 'ervandew/supertab'
-Bundle 'coaxmetal/humblevundlebundle'
+"Bundle 'coaxmetal/YouCompleteMe'
+"Bundle 'Shougo/unite.vim'
 
 " python
 Bundle 'jmcantrell/vim-virtualenv'
@@ -56,7 +57,6 @@ Bundle 'marijnh/tern_for_vim'
 
 " other
 Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'jimenezrick/vimerl'
 Bundle 'mattn/emmet-vim'
 Bundle 'gregsexton/MatchTag'
 Bundle 'c9s/vimomni.vim'
@@ -241,6 +241,14 @@ nnoremap <C-j>g :Unite grep:.<CR>
 au FileType unite call s:unite_buffer_settings()
 function! s:unite_buffer_settings()
     setl norelativenumber
+    nmap <buffer> <C-r> <Plug>(unite_narrowing_input_history)
+    imap <buffer> <C-r> <Plug>(unite_narrowing_input_history)
+    let unite = unite#get_current_unite()
+    if unite.profile_name ==# 'search'
+        nnoremap <silent><buffer><expr> r unite#do_action('replace')
+    else
+        nnoremap <silent><buffer><expr> r unite#do_action('rename')
+    endif
 endfunction
 
 " virtualenv
@@ -338,6 +346,9 @@ au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker=
 " tagbar
 let g:tagbar_foldlevel = 1
 let g:tagbar_autoshowtag = 1
+
+" ConqueTerm
+let g:ConqueTerm_Color = 1
 
 " autosave
 " set autowriteall
