@@ -335,17 +335,17 @@ let g:ycm_key_invoke_completion = '<C-Space>'
 " utlisnips
 " it needs a binding even thogbuh I don't use those, so just something that
 " wont be used
-let g:UltiSnipsExpandTrigger="<C-tab>"
-let g:UltiSnipsListSnippets="<C-D-k>"
-let g:UltiSnipsJumpForwardTrigger="<C-tab>"
-let g:UltiSnipsJumpBackwardTrigger="<C-S-tab>"
+let g:UltiSnipsExpandTrigger="<C-Tab>"
+let g:UltiSnipsListSnippets="<C-D-Tab>" " this doesn't work but it won't complain
+let g:UltiSnipsJumpForwardTriger="<C-Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<C-S-Tab" " same
 
 " css folding
 au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
 
 " tagbar
 let g:tagbar_foldlevel = 1
-let g:tagbar_autoshowtag = 1
+let g:tagbar_autoshowtag = 0
 
 " ConqueTerm
 let g:ConqueTerm_Color = 1
