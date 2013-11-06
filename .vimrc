@@ -352,8 +352,7 @@ let g:tagbar_foldlevel = 1
 let g:tagbar_autoshowtag = 0
 
 " vimshell
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_prompt = $USER."% "
+let g:vimshell_prompt = "%> "
 let g:vimshell_enable_smart_case = 1
 nnoremap gt :VimShellCurrentDir<CR>
 nnoremap gT :VimShellBufferDir<CR>
