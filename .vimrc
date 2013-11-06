@@ -25,6 +25,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Shougo/vimproc.vim'
+Bundle 'Shougo/vimshell.vim'
 Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'coaxmetal/unite.vim'
 Bundle 'bling/vim-airline'
@@ -237,7 +238,7 @@ nnoremap <C-j>F :UniteWithBufferDir file file/new<CR>
 nnoremap <C-j>r :Unite file_mru<CR>
 nnoremap <C-j>j :Unite jump<CR>
 nnoremap <C-j>g :Unite grep:.<CR>
-nnoremap <C-j>s :Unite ultisnips<CR>
+nnoremap <C-j>u :Unite ultisnips<CR>
 
 au FileType unite call s:unite_buffer_settings()
 function! s:unite_buffer_settings()
@@ -323,12 +324,14 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_filetype_blacklist = {
-            \ 'html' : 1,
-            \ 'htmldjango' : 1,
+            \ 'html' : 0,
+            \ 'htmldjango' : 0,
             \ 'markdown' : 1,
             \ 'text': 1,
             \ 'note' : 1,
             \ 'unite': 1,
+            \ 'vimshell': 1,
+            \ 'conque': 1,
             \}
 let g:ycm_key_detailed_diagnostics = ''
 let g:ycm_key_invoke_completion = '<C-Space>'
@@ -348,8 +351,17 @@ au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker=
 let g:tagbar_foldlevel = 1
 let g:tagbar_autoshowtag = 0
 
-" ConqueTerm
+" vimshell
+let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+let g:vimshell_prompt = $USER."% "
+let g:vimshell_enable_smart_case = 1
+nnoremap gt :VimShellCurrentDir<CR>
+nnoremap gT :VimShellBufferDir<CR>
+autocmd FileType vimshell call vimshell#altercmd#define('g', 'git')
+
+" Conque
 let g:ConqueTerm_Color = 1
+let g:ConqueTerm_ToggleKey = '<F8>'
 
 " autosave
 " set autowriteall
