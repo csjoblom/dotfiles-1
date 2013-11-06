@@ -24,10 +24,10 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-fugitive'
+Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/vimshell.vim'
-Bundle 'coaxmetal/humblevundlebundle'
-Bundle 'coaxmetal/unite.vim'
+Bundle 'Shougo/unite.vim'
 Bundle 'bling/vim-airline'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'mhinz/vim-signify'
@@ -41,7 +41,6 @@ Bundle 'SirVer/ultisnips'
 Bundle 'vim-scripts/Conque-Shell'
 "Bundle 'ervandew/supertab'
 "Bundle 'coaxmetal/YouCompleteMe'
-"Bundle 'Shougo/unite.vim'
 
 " python
 Bundle 'jmcantrell/vim-virtualenv'
@@ -352,11 +351,17 @@ let g:tagbar_foldlevel = 1
 let g:tagbar_autoshowtag = 0
 
 " vimshell
-let g:vimshell_prompt = "%> "
+let g:vimshell_prompt = "% "
 let g:vimshell_enable_smart_case = 1
 nnoremap gt :VimShellCurrentDir<CR>
 nnoremap gT :VimShellBufferDir<CR>
-autocmd FileType vimshell call vimshell#altercmd#define('g', 'git')
+au FileType vimshell call s:vimshell_settings()
+function! s:vimshell_settings()
+    call vimshell#altercmd#define('g', 'git')
+    setl completeopt+=longest
+    setl norelativenumber
+    setl nonumber
+endfunction
 
 " Conque
 let g:ConqueTerm_Color = 1
