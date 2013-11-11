@@ -159,7 +159,7 @@ nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>T :TagbarToggle<CR>
 nnoremap <leader>t :TagbarOpenAutoClose<CR>
 nnoremap <leader>W :Kwbd<CR>
-nnoremap <silent> <leader>n :nohlsearch<CR>
+nnoremap <silent> <leader><space> :nohlsearch<CR>
 nnoremap <silent> <leader>r :call RelativeNumberToggle()<CR>
 nnoremap <C-Y> 3<C-Y>
 nnoremap <C-E> 3<C-E>
