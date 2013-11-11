@@ -28,8 +28,8 @@ Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/vimshell.vim'
 Bundle 'Shougo/unite.vim'
+" Bundle 'Shougo/neocomplete.vim'
 Bundle 'bling/vim-airline'
-Bundle 'Valloric/YouCompleteMe'
 Bundle 'mhinz/vim-signify'
 Bundle 'scrooloose/syntastic'
 Bundle 'embear/vim-localvimrc'
@@ -39,10 +39,10 @@ Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'vim-scripts/Conque-Shell'
-"Bundle 'ervandew/supertab'
-"Bundle 'coaxmetal/YouCompleteMe'
+Bundle 'ervandew/supertab'
 
 " python
+Bundle 'davidhalter/jedi-vim'
 Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'klen/python-mode'
 Bundle 'ivanov/vim-ipython'
@@ -59,7 +59,6 @@ Bundle 'marijnh/tern_for_vim'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'gregsexton/MatchTag'
-Bundle 'c9s/vimomni.vim'
 Bundle 'vim-scripts/indenthtml.vim'
 Bundle 'vim-scripts/csv.vim'
 
@@ -146,7 +145,9 @@ set relativenumber
 set laststatus=2
 set guifont=meslo\ lg\ s\ for\ powerline:h12
 set t_Co=256
-colorscheme Tomorrow-Night-Eighties-Custom
+set background=dark
+let g:base16_variant = "eighties"
+colorscheme base-16-custom
 
 " completion
 set completeopt=longest,menuone
@@ -158,11 +159,11 @@ nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>T :TagbarToggle<CR>
 nnoremap <leader>t :TagbarOpenAutoClose<CR>
 nnoremap <leader>W :Kwbd<CR>
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <silent> <leader>n :nohlsearch<CR>
 nnoremap <silent> <leader>r :call RelativeNumberToggle()<CR>
-noremap <C-Y> 3<C-Y>
-noremap <C-E> 3<C-E>
+nnoremap <C-Y> 3<C-Y>
+nnoremap <C-E> 3<C-E>
+nnoremap gs :Scratch<CR>
 map <silent> <leader>k <plug>DashSearch
 map <silent> <leader>K <plug>DashGlobalSearch
 
@@ -180,7 +181,7 @@ nnoremap ]L :llast<CR>
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
-let g:airline_theme = 'tomorrow'
+let g:airline_theme = 'base16'
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ' '
 let g:airline_left_alt_sep = ' '
@@ -264,13 +265,14 @@ let g:signify_sign_overwrite = 0
 let g:user_emmet_leader_key = '<C-k>'
 
 " supertab
-"let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-"let g:SuperTabLongestEnhanced = 1
-"let g:SuperTabClosePreviewOnPopupClose = 1
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+let g:SuperTabLongestEnhanced = 0
+let g:SuperTabClosePreviewOnPopupClose = 1
+let g:SuperTabLongestHighlight = 0
 
 " python mode settings
 " disable most of it (replaced with other plugins)
-" Keeping for rope refactoring and syntax
 let g:pymode_options = 0
 let g:pymode_lint = 0
 let g:pymode_virtualenv = 0
@@ -282,13 +284,7 @@ let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_syntax_print_as_function = 1
 let g:pymode_indent = 1
-let g:pymode_rope = 1
-let g:pymode_rope_auto_project = 1
-let g:pymode_rope_guess_project = 1
-let g:pymode_rope_enable_autoimport = 0
-let g:pymode_rope_autoimport_generate = 0
-let g:pymode_rope_vim_completion = 0
-let g:pymode_rope_autocomplete_map = '<C-c>rcp'
+let g:pymode_rope = 0
 
 " syntastic settings
 let g:syntastic_always_populate_loc_list=1
@@ -316,24 +312,10 @@ let g:html_indent_inctags = "html,body,head,tbody,li"
 let g:html_indent_script1 = "auto"
 let g:html_indent_style1 = "auto"
 
-" ycm settings
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_min_num_of_chars_for_completion = 2
-let g:ycm_filetype_blacklist = {
-            \ 'html' : 0,
-            \ 'htmldjango' : 0,
-            \ 'markdown' : 1,
-            \ 'text': 1,
-            \ 'note' : 1,
-            \ 'unite': 1,
-            \ 'vimshell': 1,
-            \ 'conque': 1,
-            \}
-let g:ycm_key_detailed_diagnostics = ''
-let g:ycm_key_invoke_completion = '<C-Space>'
+" jedi
+let g:jedi#popup_select_first = 0
+let g:jedi#show_call_signatures = "0"
+au FileType python setl completeopt-=preview
 
 " utlisnips
 " it needs a binding even thogbuh I don't use those, so just something that
@@ -347,20 +329,28 @@ let g:UltiSnipsJumpBackwardTrigger="<C-S-Tab" " same
 au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
 
 " tagbar
-let g:tagbar_foldlevel = 1
-let g:tagbar_autoshowtag = 0
+let g:tagbar_foldlevel = 0
+let g:tagbar_autoshowtag = 1
+
+" neocomplete
+" let g:neocomplete#enable_at_startup = 0
+" let g:neocomplete#enable_smart_case = 1
+autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " vimshell
-let g:vimshell_prompt = "% "
 let g:vimshell_enable_smart_case = 1
 nnoremap gt :VimShellCurrentDir<CR>
 nnoremap gT :VimShellBufferDir<CR>
+let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~").">", "\\[]()?! ")." "'
+let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
 au FileType vimshell call s:vimshell_settings()
 function! s:vimshell_settings()
     call vimshell#altercmd#define('g', 'git')
-    setl completeopt+=longest
     setl norelativenumber
     setl nonumber
+    setl omnifunc=vimshell#complete#omnifunc
 endfunction
 
 " Conque
