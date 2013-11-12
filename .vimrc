@@ -267,9 +267,12 @@ let g:user_emmet_leader_key = '<C-k>'
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-let g:SuperTabLongestEnhanced = 0
+let g:SuperTabLongestEnhanced = 1
 let g:SuperTabClosePreviewOnPopupClose = 1
-let g:SuperTabLongestHighlight = 0
+let g:SuperTabLongestHighlight = 1
+let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+let g:SuperTabContextDiscoverDiscovery = ["&omnifunc:<c-x><c-o>", "&completefunc:<c-x><c-u>"]
+
 
 " python mode settings
 " disable most of it (replaced with other plugins)
