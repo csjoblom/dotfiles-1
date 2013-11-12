@@ -313,8 +313,9 @@ let g:html_indent_script1 = "auto"
 let g:html_indent_style1 = "auto"
 
 " jedi
-let g:jedi#popup_select_first = 0
 let g:jedi#show_call_signatures = "0"
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#popup_select_first = 1
 au FileType python setl completeopt-=preview
 
 " utlisnips
