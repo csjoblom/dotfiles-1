@@ -8,7 +8,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " general/filetype agnostic
-Bundle 'vim-scripts/CSApprox'
+" Bundle 'vim-scripts/CSApprox'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/scratch.vim'
 Bundle 'vim-scripts/DetectIndent'
@@ -144,7 +144,7 @@ set number
 set relativenumber
 set laststatus=2
 set guifont=meslo\ lg\ s\ for\ powerline:h12
-set t_Co=256
+" set t_Co=256
 set background=dark
 let g:base16_variant = "eighties"
 colorscheme base-16-custom
@@ -272,6 +272,10 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 let g:SuperTabLongestHighlight = 1
 let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
 let g:SuperTabContextDiscoverDiscovery = ["&omnifunc:<c-x><c-o>", "&completefunc:<c-x><c-u>"]
+au FileType *
+    \ if &omnifunc != '' |
+    \   call SuperTabChain(&omnifunc, "<c-p>") |
+    \ endif
 
 
 " python mode settings
@@ -282,6 +286,7 @@ let g:pymode_virtualenv = 0
 let g:pymode_breakpoint = 0
 let g:pymode_utils_whitespaces = 0
 let g:pymode_run = 0
+let g:pymode_doc = 0
 let g:pymode_folding = 1
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
