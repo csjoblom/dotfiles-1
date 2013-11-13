@@ -144,9 +144,10 @@ set number
 set relativenumber
 set laststatus=2
 set guifont=meslo\ lg\ s\ for\ powerline:h12
-" set t_Co=256
+set t_Co=256
 set background=dark
 let g:base16_variant = "eighties"
+let g:base16colorspace = "256"
 colorscheme base-16-custom
 
 " completion
@@ -269,7 +270,7 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 let g:SuperTabLongestEnhanced = 1
 let g:SuperTabClosePreviewOnPopupClose = 1
-let g:SuperTabLongestHighlight = 1
+let g:SuperTabLongestHighlight = 0
 let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
 let g:SuperTabContextDiscoverDiscovery = ["&omnifunc:<c-x><c-o>", "&completefunc:<c-x><c-u>"]
 au FileType *
@@ -323,7 +324,7 @@ let g:html_indent_style1 = "auto"
 " jedi
 let g:jedi#show_call_signatures = "0"
 let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#popup_select_first = 1
+let g:jedi#popup_select_first = 0
 au FileType python setl completeopt-=preview
 
 " utlisnips

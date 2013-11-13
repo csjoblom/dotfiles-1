@@ -33,6 +33,7 @@ for f in ~/.zsh/*.sh; do source $f; done
 
 # some other variables
 export GIT_EDITOR='vim'
+export EDITOR='vim'
 export GOPATH=$HOME/go
 
 export PATH=/usr/local/bin:/usr/local/opt/ruby/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/share/npm/bin
@@ -44,3 +45,9 @@ unset PYTHONPATH
 # some keys for reverse search
 bindkey -M vicmd '?' history-incremental-search-backward
 bindkey '^R' history-incremental-pattern-search-backward
+
+# Base16 Colors
+BASE16_SCHEME="eighties"
+BASE16_SHELL="$HOME/.dotfiles/base16-shell/base16-$BASE16_SCHEME.dark.sh"
+[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
+#
