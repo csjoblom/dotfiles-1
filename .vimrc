@@ -19,7 +19,7 @@ Bundle 'rking/ag.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'scrooloose/nerdtree'
+" Bundle 'scrooloose/nerdtree'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
@@ -28,6 +28,7 @@ Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/vimshell.vim'
 Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimfiler.vim'
 " Bundle 'Shougo/neocomplete.vim'
 Bundle 'bling/vim-airline'
 Bundle 'mhinz/vim-signify'
@@ -266,18 +267,16 @@ let g:signify_sign_overwrite = 0
 let g:user_emmet_leader_key = '<C-k>'
 
 " supertab
-let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
 let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 let g:SuperTabLongestEnhanced = 1
 let g:SuperTabClosePreviewOnPopupClose = 1
 let g:SuperTabLongestHighlight = 0
-let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-let g:SuperTabContextDiscoverDiscovery = ["&omnifunc:<c-x><c-o>", "&completefunc:<c-x><c-u>"]
-au FileType *
+autocmd FileType *
     \ if &omnifunc != '' |
-    \   call SuperTabChain(&omnifunc, "<c-p>") |
+    \ call SuperTabChain(&omnifunc, "<c-n>") |
+    \ call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
     \ endif
-
 
 " python mode settings
 " disable most of it (replaced with other plugins)
@@ -308,13 +307,16 @@ let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_flake8_args='--ignore=E123,E124,E126,E128,E231,E261,E401,E501'
 
 " NERDTree
-let NERDTreeIgnore = ['\.pyc$']
-let NERDTreeBookmarksFile="~/.vim/.cache/NERDTreeBookmarks"
-nnoremap \ :NERDTreeToggle<CR>
-nnoremap <leader>\ :NERDTreeFind<CR>
-
-" CSApprox
-let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
+" let NERDTreeBookmarksFile="~/.vim/.cache/NERDTreeBookmarks"
+" nnoremap \ :NERDTreeToggle<CR>
+" nnoremap <leader>\ :NERDTreeFind<CR>
+"
+" vimfiler
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_data_directory = "~/.vim/.cache/.vimfiler"
+nnoremap \ :VimFilerExplorer<CR>
+" nnoremap <leader>\ :NERDTreeFind<CR>
 
 " html indentation
 let g:html_indent_inctags = "html,body,head,tbody,li"
