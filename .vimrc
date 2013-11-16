@@ -19,7 +19,7 @@ Bundle 'rking/ag.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'terryma/vim-multiple-cursors'
-" Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdtree'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
@@ -28,7 +28,6 @@ Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/vimshell.vim'
 Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimfiler.vim'
 " Bundle 'Shougo/neocomplete.vim'
 Bundle 'bling/vim-airline'
 Bundle 'mhinz/vim-signify'
@@ -307,16 +306,9 @@ let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_flake8_args='--ignore=E123,E124,E126,E128,E231,E261,E401,E501'
 
 " NERDTree
-" let NERDTreeBookmarksFile="~/.vim/.cache/NERDTreeBookmarks"
-" nnoremap \ :NERDTreeToggle<CR>
-" nnoremap <leader>\ :NERDTreeFind<CR>
-"
-" vimfiler
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_safe_mode_by_default = 0
-let g:vimfiler_data_directory = "~/.vim/.cache/.vimfiler"
-nnoremap \ :VimFilerExplorer<CR>
-" nnoremap <leader>\ :NERDTreeFind<CR>
+let NERDTreeBookmarksFile="~/.vim/.cache/NERDTreeBookmarks"
+nnoremap \ :NERDTreeToggle<CR>
+nnoremap <leader>\ :NERDTreeFind<CR>
 
 " html indentation
 let g:html_indent_inctags = "html,body,head,tbody,li"
