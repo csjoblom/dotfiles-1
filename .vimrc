@@ -307,6 +307,7 @@ let g:syntastic_python_flake8_args='--ignore=E123,E124,E126,E128,E231,E261,E401,
 
 " NERDTree
 let NERDTreeBookmarksFile="~/.vim/.cache/NERDTreeBookmarks"
+let NERDTreeIgnore = ['\.pyc$']
 nnoremap \ :NERDTreeToggle<CR>
 nnoremap <leader>\ :NERDTreeFind<CR>
 
