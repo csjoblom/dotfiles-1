@@ -40,6 +40,8 @@ Bundle 'mattn/gist-vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'vim-scripts/Conque-Shell'
 Bundle 'ervandew/supertab'
+Bundle 'vim-scripts/L9'
+Bundle 'vim-scripts/FuzzyFinder'
 
 " python
 Bundle 'davidhalter/jedi-vim'
@@ -253,6 +255,9 @@ function! s:unite_buffer_settings()
         nnoremap <silent><buffer><expr> r unite#do_action('rename')
     endif
 endfunction
+
+" Fuzzyfinder (until I get around to writing a buffertag source for unite)
+nnoremap <c-j>t :FufBufferTag<CR>
 
 " virtualenv
 let g:virtualenv_directory="~/.virtualenvs/"
