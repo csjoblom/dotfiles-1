@@ -15,14 +15,16 @@
 [branch]
     autosetupmerge = true
 [user]
-	name = Derek Leverenz
-	email = derek.leverenz@gmail.com
+    name = Derek Leverenz
+    email = derek.leverenz@gmail.com
 [github]
-	user = coaxmetal
-        token = SECRETS_GO_HERE
+    user = coaxmetal
+    token = SECRETS_GO_HERE
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 [push]
-	default = current
+    default = current
 [core]
-	excludesfile = ~/.gitignore_global
+    excludesfile = ~/.gitignore_global
+[diff]
+    algorithm = patience
