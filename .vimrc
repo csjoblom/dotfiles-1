@@ -293,9 +293,10 @@ let g:pymode_run = 0
 let g:pymode_doc = 0
 let g:pymode_folding = 1
 let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
 let g:pymode_syntax_print_as_function = 1
-let g:pymode_indent = 1
+let g:pymode_syntax_space_errors = 0
+let g:pymode_syntax_indent_errors = 0
+let g:pymode_indent = 0
 let g:pymode_rope = 0
 
 " syntastic settings
