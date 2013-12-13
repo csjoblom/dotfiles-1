@@ -46,7 +46,7 @@ Bundle 'vim-scripts/FuzzyFinder'
 " python
 Bundle 'davidhalter/jedi-vim'
 Bundle 'jmcantrell/vim-virtualenv'
-Bundle 'klen/python-mode'
+Bundle 'coaxmetal/python-syntax'
 Bundle 'ivanov/vim-ipython'
 
 " go
@@ -282,22 +282,9 @@ autocmd FileType *
     \ call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
     \ endif
 
-" python mode settings
-" disable most of it (replaced with other plugins)
-let g:pymode_options = 0
-let g:pymode_lint = 0
-let g:pymode_virtualenv = 0
-let g:pymode_breakpoint = 0
-let g:pymode_utils_whitespaces = 0
-let g:pymode_run = 0
-let g:pymode_doc = 0
-let g:pymode_folding = 1
-let g:pymode_syntax = 1
-let g:pymode_syntax_print_as_function = 1
-let g:pymode_syntax_space_errors = 0
-let g:pymode_syntax_indent_errors = 0
-let g:pymode_indent = 0
-let g:pymode_rope = 0
+" python-syntax
+let python_highlight_all = 1
+let python_version_2 = 1 "default to py2 highlighting
 
 " syntastic settings
 let g:syntastic_always_populate_loc_list=1
