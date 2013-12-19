@@ -8,7 +8,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " general/filetype agnostic
-" Bundle 'vim-scripts/CSApprox'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/scratch.vim'
 Bundle 'vim-scripts/DetectIndent'
@@ -28,7 +27,6 @@ Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/vimshell.vim'
 Bundle 'Shougo/unite.vim'
-" Bundle 'Shougo/neocomplete.vim'
 Bundle 'bling/vim-airline'
 Bundle 'mhinz/vim-signify'
 Bundle 'scrooloose/syntastic'
@@ -56,6 +54,10 @@ Bundle 'Blackrush/vim-gocode'
 " javascript
 Bundle 'pangloss/vim-javascript'
 Bundle 'marijnh/tern_for_vim'
+
+" Racket
+Bundle 'wlangstroth/vim-racket'
+Bundle 'kovisoft/slimv'
 
 " other
 Bundle 'cakebaker/scss-syntax.vim'
