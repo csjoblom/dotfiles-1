@@ -19,3 +19,5 @@ fi
 # custom
 for f in ~/.zsh/*.sh; do source $f; done
 source ~/.zsh/git-omz.zsh
+
+bindkey '^R' history-incremental-search-backward

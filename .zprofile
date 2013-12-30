@@ -47,7 +47,6 @@ typeset -gU cdpath fpath mailpath path
 path=(
   /usr/local/{bin,sbin}
   /usr/local/share/npm/bin
-  /usr/local/opt/ruby/bin
   $path
 )
 
