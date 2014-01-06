@@ -165,7 +165,7 @@ nnoremap <leader>T :TagbarToggle<CR>
 nnoremap <leader>t :TagbarOpenAutoClose<CR>
 nnoremap <leader>W :Kwbd<CR>
 nnoremap <silent> <leader><space> :nohlsearch<CR>
-nnoremap <silent> <leader>r :call RelativeNumberToggle()<CR>
+nnoremap <silent> <leader>R :call RelativeNumberToggle()<CR>
 nnoremap <C-Y> 3<C-Y>
 nnoremap <C-E> 3<C-E>
 nnoremap gs :Scratch<CR>
@@ -294,6 +294,8 @@ let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=1
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
+let g:syntastic_style_warning_symbol='⚠'
+let g:syntastic_style_error_symbol='⚠'
 let g:syntastic_mode_map = { 'mode': 'active',
             \ 'active_filetypes': ['javascript', 'python'],
             \ 'passive_filetypes': ['html', 'scss', 'sass'] }
