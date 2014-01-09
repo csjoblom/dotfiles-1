@@ -5,6 +5,8 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+let s:use_ycm = 0
+
 Bundle 'gmarik/vundle'
 
 " general/filetype agnostic
@@ -37,12 +39,10 @@ Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'vim-scripts/Conque-Shell'
-Bundle 'ervandew/supertab'
 Bundle 'vim-scripts/L9'
 Bundle 'vim-scripts/FuzzyFinder'
 
 " python
-Bundle 'davidhalter/jedi-vim'
 Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'coaxmetal/python-syntax'
 Bundle 'ivanov/vim-ipython'
@@ -65,6 +65,14 @@ Bundle 'mattn/emmet-vim'
 Bundle 'gregsexton/MatchTag'
 Bundle 'vim-scripts/indenthtml.vim'
 Bundle 'vim-scripts/csv.vim'
+
+" YCM/completion
+if s:use_ycm
+    Bundle 'Valloric/YouCompleteMe'
+else
+    Bundle 'ervandew/supertab'
+    Bundle 'davidhalter/jedi-vim'
+endif
 
 " note: both YouCompleteMe and vimproc.vim need to be compiled manually after installation
 
@@ -210,6 +218,7 @@ let g:airline_mode_map = {
       \ }
 
 " detect indent
+" this doesn't really work as well as I wish it did, but it does something
 let g:detectindent_preferred_expandtab = 1
 let g:detectindent_preferred_indent = 4
 autocmd BufNewFile,BufRead * :DetectIndent
@@ -268,21 +277,50 @@ let g:virtualenv_stl_format = '%n'
 
 " signify
 let g:signify_sign_overwrite = 0
+let g:signify_diffoptions = { 'git': '-w', 'hg': '-w' }
 
 "emmet
 let g:user_emmet_leader_key = '<C-k>'
 
-" supertab
-let g:SuperTabContextDefaultCompletionType = "<c-n>"
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-let g:SuperTabLongestEnhanced = 1
-let g:SuperTabClosePreviewOnPopupClose = 1
-let g:SuperTabLongestHighlight = 0
-autocmd FileType *
-    \ if &omnifunc != '' |
-    \ call SuperTabChain(&omnifunc, "<c-n>") |
-    \ call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
-    \ endif
+if s:use_ycm
+    " ycm settings
+    let g:ycm_seed_identifiers_with_syntax = 1
+    let g:ycm_use_ultisnips_completer = 0
+    let g:ycm_add_preview_to_completeopt = 0
+    let g:ycm_autoclose_preview_window_after_completion = 1
+    let g:ycm_collect_identifiers_from_tags_files = 1
+    let g:ycm_min_num_of_chars_for_completion = 2
+    let g:ycm_filetype_blacklist = {
+                \ 'html' : 0,
+                \ 'htmldjango' : 0,
+                \ 'markdown' : 1,
+                \ 'text': 1,
+                \ 'note' : 1,
+                \ 'unite': 1,
+                \ 'vimshell': 1,
+                \ 'conque': 1,
+                \}
+    let g:ycm_key_detailed_diagnostics = ''
+    let g:ycm_key_invoke_completion = '<C-Space>'
+else
+    " supertab
+    let g:SuperTabContextDefaultCompletionType = "<c-n>"
+    let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+    let g:SuperTabLongestEnhanced = 1
+    let g:SuperTabClosePreviewOnPopupClose = 1
+    let g:SuperTabLongestHighlight = 0
+    autocmd FileType *
+        \ if &omnifunc != '' |
+        \ call SuperTabChain(&omnifunc, "<c-n>") |
+        \ call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+        \ endif
+
+    " jedi
+    let g:jedi#show_call_signatures = "0"
+    let g:jedi#use_tabs_not_buffers = 0
+    let g:jedi#popup_select_first = 0
+    au FileType python setl completeopt-=preview
+endif
 
 " python-syntax
 let python_highlight_all = 1
@@ -312,12 +350,6 @@ nnoremap <leader>\ :NERDTreeFind<CR>
 let g:html_indent_inctags = "html,body,head,tbody,li"
 let g:html_indent_script1 = "auto"
 let g:html_indent_style1 = "auto"
-
-" jedi
-let g:jedi#show_call_signatures = "0"
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#popup_select_first = 0
-au FileType python setl completeopt-=preview
 
 " utlisnips
 " it needs a binding even thogbuh I don't use those, so just something that
