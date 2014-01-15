@@ -38,7 +38,7 @@ Bundle 'rizzatti/dash.vim'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'SirVer/ultisnips'
-Bundle 'vim-scripts/Conque-Shell'
+" Bundle 'vim-scripts/Conque-Shell'
 Bundle 'vim-scripts/L9'
 Bundle 'vim-scripts/FuzzyFinder'
 
@@ -55,9 +55,14 @@ Bundle 'Blackrush/vim-gocode'
 Bundle 'pangloss/vim-javascript'
 Bundle 'marijnh/tern_for_vim'
 
-" Racket
+" Various Lisps
 Bundle 'wlangstroth/vim-racket'
-Bundle 'kovisoft/slimv'
+Bundle 'vim-scripts/paredit.vim'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'guns/vim-clojure-static'
+Bundle 'guns/vim-clojure-highlight'
+Bundle 'tpope/vim-classpath'
+Bundle 'tpope/vim-fireplace'
 
 " other
 Bundle 'cakebaker/scss-syntax.vim'
@@ -174,8 +179,6 @@ nnoremap <leader>t :TagbarOpenAutoClose<CR>
 nnoremap <leader>W :Kwbd<CR>
 nnoremap <silent> <leader><space> :nohlsearch<CR>
 nnoremap <silent> <leader>R :call RelativeNumberToggle()<CR>
-nnoremap <C-Y> 3<C-Y>
-nnoremap <C-E> 3<C-E>
 nnoremap gs :Scratch<CR>
 map <silent> <leader>k <plug>DashSearch
 map <silent> <leader>K <plug>DashGlobalSearch
@@ -222,6 +225,9 @@ let g:airline_mode_map = {
 let g:detectindent_preferred_expandtab = 1
 let g:detectindent_preferred_indent = 4
 autocmd BufNewFile,BufRead * :DetectIndent
+
+" Rainbow Parens
+nnoremap gp :RainbowParenthesesToggle<CR>
 
 " unite
 let g:unite_data_directory="~/.vim/.cache/unite"
@@ -277,7 +283,8 @@ let g:virtualenv_stl_format = '%n'
 
 " signify
 let g:signify_sign_overwrite = 0
-let g:signify_diffoptions = { 'git': '-w', 'hg': '-w' }
+let g:signify_diffoptions = {'git': '-w',
+                            \ 'hg': '-w'}
 
 "emmet
 let g:user_emmet_leader_key = '<C-k>'
@@ -348,8 +355,6 @@ nnoremap <leader>\ :NERDTreeFind<CR>
 
 " html indentation
 let g:html_indent_inctags = "html,body,head,tbody,li"
-let g:html_indent_script1 = "auto"
-let g:html_indent_style1 = "auto"
 
 " utlisnips
 " it needs a binding even thogbuh I don't use those, so just something that
@@ -366,9 +371,6 @@ au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker=
 let g:tagbar_foldlevel = 0
 let g:tagbar_autoshowtag = 1
 
-" neocomplete
-" let g:neocomplete#enable_at_startup = 0
-" let g:neocomplete#enable_smart_case = 1
 autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
@@ -388,8 +390,8 @@ function! s:vimshell_settings()
 endfunction
 
 " Conque
-let g:ConqueTerm_Color = 1
-let g:ConqueTerm_ToggleKey = '<F8>'
+" let g:ConqueTerm_Color = 1
+" let g:ConqueTerm_ToggleKey = '<F8>'
 
 " autosave
 " set autowriteall
