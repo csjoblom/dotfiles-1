@@ -55,15 +55,6 @@ Bundle 'Blackrush/vim-gocode'
 Bundle 'pangloss/vim-javascript'
 Bundle 'marijnh/tern_for_vim'
 
-" Various Lisps
-Bundle 'wlangstroth/vim-racket'
-Bundle 'vim-scripts/paredit.vim'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'guns/vim-clojure-static'
-Bundle 'guns/vim-clojure-highlight'
-Bundle 'tpope/vim-classpath'
-Bundle 'tpope/vim-fireplace'
-
 " other
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'mattn/emmet-vim'
@@ -226,9 +217,6 @@ let g:detectindent_preferred_expandtab = 1
 let g:detectindent_preferred_indent = 4
 autocmd BufNewFile,BufRead * :DetectIndent
 
-" Rainbow Parens
-nnoremap gp :RainbowParenthesesToggle<CR>
-
 " unite
 let g:unite_data_directory="~/.vim/.cache/unite"
 let g:unite_source_rec_max_cache_files=5000
@@ -345,7 +333,7 @@ let g:syntastic_mode_map = { 'mode': 'active',
             \ 'active_filetypes': ['javascript', 'python'],
             \ 'passive_filetypes': ['html', 'scss', 'sass'] }
 let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E123,E124,E126,E128,E231,E261,E401,E501'
+let g:syntastic_python_flake8_args='--ignore=E123,E124,E126,E128,E201,E202,E203,E231,E261,E262,E401,E501'
 
 " NERDTree
 let NERDTreeBookmarksFile="~/.vim/.cache/NERDTreeBookmarks"
