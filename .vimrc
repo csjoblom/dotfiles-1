@@ -102,6 +102,14 @@ function! StripTrailingWhitespace()
     call cursor(l, c)
 endfunction
 
+function! ToggleColorColumn()
+    if (&colorcolumn == '+1')
+        set colorcolumn=0
+    else
+        set colorcolumn=+1
+    endif
+endfunc
+
 " strip trailing whitespace on save
 autocmd FileType python,javascript autocmd BufWritePre * :call StripTrailingWhitespace()
 
@@ -123,6 +131,7 @@ set scrolloff=2
 set backupdir=~/.vim/.cache,~/.tmp,/var/tmp,/tmp
 set directory=~/.vim/.cache/,~/.tmp,/var/tmp,/tmp
 set tags+=.tags
+set cursorline
 
 " folding
 set foldmethod=syntax
@@ -139,7 +148,8 @@ set smartindent
 set expandtab
 set shiftwidth=4 ts=4 softtabstop=4
 set shiftround
-"set textwidth=99
+set formatoptions+=t
+set textwidth=120
 
 " searching
 set hlsearch
@@ -170,6 +180,7 @@ nnoremap <leader>t :TagbarOpenAutoClose<CR>
 nnoremap <leader>W :Kwbd<CR>
 nnoremap <silent> <leader><space> :nohlsearch<CR>
 nnoremap <silent> <leader>R :call RelativeNumberToggle()<CR>
+nnoremap <silent> <leader>cc :call ToggleColorColumn()<CR>
 nnoremap gs :Scratch<CR>
 map <silent> <leader>k <plug>DashSearch
 map <silent> <leader>K <plug>DashGlobalSearch
@@ -273,6 +284,7 @@ let g:virtualenv_stl_format = '%n'
 let g:signify_sign_overwrite = 0
 let g:signify_diffoptions = {'git': '-w',
                             \ 'hg': '-w'}
+let g:signify_update_on_focusgained = 1
 
 "emmet
 let g:user_emmet_leader_key = '<C-k>'
