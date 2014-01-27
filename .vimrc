@@ -282,9 +282,8 @@ let g:virtualenv_stl_format = '%n'
 
 " signify
 let g:signify_sign_overwrite = 0
-let g:signify_diffoptions = {'git': '-w',
-                            \ 'hg': '-w'}
 let g:signify_update_on_focusgained = 1
+let g:signify_diffoptions = {'git': '-w --diff-algorithm=myers'}
 
 "emmet
 let g:user_emmet_leader_key = '<C-k>'
