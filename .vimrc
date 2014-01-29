@@ -5,7 +5,7 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-let s:use_ycm = 0
+let s:use_ycm = 1
 
 Bundle 'gmarik/vundle'
 
@@ -60,15 +60,16 @@ Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'gregsexton/MatchTag'
 Bundle 'vim-scripts/indenthtml.vim'
-Bundle 'vim-scripts/csv.vim'
+" Bundle 'vim-scripts/csv.vim'
 
 " YCM/completion
 if s:use_ycm
     Bundle 'Valloric/YouCompleteMe'
 else
     Bundle 'ervandew/supertab'
-    Bundle 'davidhalter/jedi-vim'
 endif
+
+Bundle 'davidhalter/jedi-vim'
 
 " note: both YouCompleteMe and vimproc.vim need to be compiled manually after installation
 
@@ -148,7 +149,6 @@ set smartindent
 set expandtab
 set shiftwidth=4 ts=4 softtabstop=4
 set shiftround
-set formatoptions+=t
 set textwidth=120
 
 " searching
@@ -309,25 +309,27 @@ if s:use_ycm
                 \}
     let g:ycm_key_detailed_diagnostics = ''
     let g:ycm_key_invoke_completion = '<C-Space>'
+
+    let g:jedi#completions_enabled = 0
 else
     " supertab
-    let g:SuperTabContextDefaultCompletionType = "<c-n>"
+    let g:SuperTabDefaultCompletionType = 'context'
+    let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
     let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+    let g:SuperTabContextDiscoverDiscovery =
+        \ ['&completefunc:<c-x><c-u>', '&omnifunc:<c-x><c-o>']
     let g:SuperTabLongestEnhanced = 1
-    let g:SuperTabClosePreviewOnPopupClose = 1
-    let g:SuperTabLongestHighlight = 0
-    autocmd FileType *
-        \ if &omnifunc != '' |
-        \ call SuperTabChain(&omnifunc, "<c-n>") |
-        \ call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
-        \ endif
+    let g:SuperTabClosePreviewOnPopupClose = 0
+    let g:SuperTabLongestHighlight = 1
 
-    " jedi
-    let g:jedi#show_call_signatures = "0"
-    let g:jedi#use_tabs_not_buffers = 0
     let g:jedi#popup_select_first = 0
-    au FileType python setl completeopt-=preview
+    let g:jedi#popup_on_dot = 0
 endif
+
+" jedi
+let g:jedi#show_call_signatures = "0"
+let g:jedi#use_tabs_not_buffers = 0
+au FileType python setl completeopt-=preview
 
 " python-syntax
 let python_highlight_all = 1
