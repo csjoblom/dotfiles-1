@@ -13,6 +13,7 @@ Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/scratch.vim'
 Bundle 'vim-scripts/DetectIndent'
+Bundle 'vim-scripts/utl.vim'
 Bundle 'Raimondi/delimitMate'
 Bundle 'mbbill/undotree'
 Bundle 'nathanaelkane/vim-indent-guides'
@@ -25,6 +26,7 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-speeddating'
 Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/vimshell.vim'
@@ -199,6 +201,7 @@ nnoremap ]L :llast<CR>
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#tagbar#enabled = 0
 let g:airline_theme = 'base16'
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ' '
