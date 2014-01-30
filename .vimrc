@@ -40,9 +40,13 @@ Bundle 'rizzatti/dash.vim'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'SirVer/ultisnips'
-" Bundle 'vim-scripts/Conque-Shell'
 Bundle 'vim-scripts/L9'
 Bundle 'vim-scripts/FuzzyFinder'
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-session'
+" Bundle 'xolox/vim-easytags'
+Bundle 'jceb/vim-orgmode'
+Bundle 'vim-voom/VOoM'
 
 " python
 Bundle 'jmcantrell/vim-virtualenv'
@@ -225,6 +229,11 @@ let g:airline_mode_map = {
       \ '' : 'S',
       \ }
 
+" easytags
+" let g:easytags_dynamic_files = 1
+" let g:easytags_auto_highlight = 0
+" let g:easytags_updatetime_warn = 0
+"
 " detect indent
 " this doesn't really work as well as I wish it did, but it does something
 let g:detectindent_preferred_expandtab = 1
@@ -309,6 +318,7 @@ if s:use_ycm
                 \ 'unite': 1,
                 \ 'vimshell': 1,
                 \ 'conque': 1,
+                \ 'org': 1,
                 \}
     let g:ycm_key_detailed_diagnostics = ''
     let g:ycm_key_invoke_completion = '<C-Space>'
