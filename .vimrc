@@ -1,9 +1,10 @@
 set nocompatible
 filetype off
 
-" vundle
+" {{{ vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+" }}}
 
 let s:use_ycm = 1
 
@@ -40,14 +41,14 @@ Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
-Bundle 'mattn/calendar-vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'vim-scripts/L9'
 Bundle 'vim-scripts/FuzzyFinder'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
+Bundle 'xolox/vim-notes'
 " Bundle 'xolox/vim-easytags'
-Bundle 'jceb/vim-orgmode'
+" Bundle 'jceb/vim-orgmode'
 Bundle 'vim-voom/VOoM'
 
 " python
@@ -123,7 +124,6 @@ autocmd FileType python,javascript autocmd BufWritePre * :call StripTrailingWhit
 
 call EnsureExists("$HOME/.vim/.cache")
 " }}}
-
 " {{{ general settings
 syntax on
 set encoding=utf-8
@@ -184,14 +184,13 @@ colorscheme base-16-custom
 " completion
 set completeopt=longest,menuone
 " }}}
-
 " {{{ key mappings
 let mapleader = ","
 let maplocalleader = "\\"
 let g:C_Ctrl_j = 'off' "disable global mapping for a linefeed
 nnoremap <leader>u :UndotreeToggle<CR>
-nnoremap <leader>T :TagbarToggle<CR>
-nnoremap <leader>t :TagbarOpenAutoClose<CR>
+nnoremap <leader>t :TagbarToggle<CR>
+nnoremap <leader>T :TagbarOpenAutoClose<CR>
 nnoremap <leader>W :Kwbd<CR>
 nnoremap <silent> <leader><space> :nohlsearch<CR>
 nnoremap <silent> <leader>R :call RelativeNumberToggle()<CR>
@@ -200,7 +199,6 @@ nnoremap gs :Scratch<CR>
 map <silent> <leader>k <plug>DashSearch
 map <silent> <leader>K <plug>DashGlobalSearch
 " }}}
-
 " {{{ navigation
 nnoremap [q :cprevious<CR>
 nnoremap ]q :cnext<CR>
@@ -211,16 +209,17 @@ nnoremap ]l :lnext<CR>
 nnoremap [L :lfirst<CR>
 nnoremap ]L :llast<CR>
 " }}}
-
 " {{{ sessions
 let g:session_autosave = 'no'
 " }}}
-
-" {{{ orgmode
-let g:org_todo_keywords = [['TODO(t)', '|', 'WIP(w)', '|', 'DONE(d)']]
-autocmd FileType org nnoremap \| :VoomToggle org<CR>
+" " {{{ orgmode
+" let g:org_todo_keywords = [['TODO(t)', 'WIP(w)', 'DONE(d)']]
+" autocmd FileType org nnoremap \| :VoomToggle org<CR>
+" " }}}
+" {{{ notes
+let g:notes_directories = ['~/Documents/Notes']
+autocmd FileType notes nnoremap \| :VoomToggle markdown<CR>
 " }}}
-
 " {{{ airline
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#virtualenv#enabled = 1
@@ -249,20 +248,17 @@ let g:airline_mode_map = {
       \ '' : 'S',
       \ }
 " }}}
-
 " {{{ easytags
 " let g:easytags_dynamic_files = 1
 " let g:easytags_auto_highlight = 0
 " let g:easytags_updatetime_warn = 0
 " }}}
-
 " {{{ detect indent
 " this doesn't really work as well as I wish it did, but it does something
 let g:detectindent_preferred_expandtab = 1
 let g:detectindent_preferred_indent = 4
 autocmd BufNewFile,BufRead * :DetectIndent
 " }}}
-
 " {{{ unite
 let g:unite_data_directory="~/.vim/.cache/unite"
 let g:unite_source_rec_max_cache_files=5000
@@ -310,24 +306,20 @@ endfunction
 " Fuzzyfinder (until I get around to writing a buffertag source for unite)
 nnoremap <c-j>t :FufBufferTag<CR>
 " }}}
-
 " {{{ virtualenv
 let g:virtualenv_directory="~/.virtualenvs/"
 let g:virtualenv_auto_activate = 1
 let g:virtualenv_stl_format = '%n'
 " }}}
-
 " {{{ signify
 let g:signify_sign_overwrite = 0
 let g:signify_update_on_focusgained = 1
 let g:signify_diffoptions = {'git': '--ignore-space-at-eol --ignore-blank-lines'}
 nnoremap <silent> <leader>S :SignifyToggle<CR>
 " }}}
-
 " {{{ emmet
 let g:user_emmet_leader_key = '<C-k>'
 " }}}
-
 " {{{ YCM/Supertab
 if s:use_ycm
     " ycm settings
@@ -343,6 +335,7 @@ if s:use_ycm
                 \ 'markdown' : 1,
                 \ 'text': 1,
                 \ 'note' : 1,
+                \ 'notes' : 1,
                 \ 'unite': 1,
                 \ 'vimshell': 1,
                 \ 'conque': 1,
@@ -367,18 +360,15 @@ else
     let g:jedi#popup_on_dot = 0
 endif
 " }}}
-
 " {{{ jedi
 let g:jedi#show_call_signatures = "0"
 let g:jedi#use_tabs_not_buffers = 0
 au FileType python setl completeopt-=preview
 " }}}
-
 " {{{ python-syntax
 let python_highlight_all = 1
 let python_version_2 = 1 "default to py2 highlighting
 " }}}
-
 " {{{ syntastic settings
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_check_on_open=1
@@ -393,18 +383,15 @@ let g:syntastic_mode_map = { 'mode': 'active',
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_flake8_args='--ignore=E123,E124,E126,E128,E201,E202,E203,E231,E261,E262,E401,E501'
 " }}}
-
 " {{{ NERDTree
 let NERDTreeBookmarksFile="~/.vim/.cache/NERDTreeBookmarks"
 let NERDTreeIgnore = ['\.pyc$']
 nnoremap \| :NERDTreeToggle<CR>
 nnoremap <leader>\| :NERDTreeFind<CR>
 " }}}
-
 " {{{ html indentation
 let g:html_indent_inctags = "html,body,head,tbody,li"
 " }}}
-
 " {{{ utlisnips
 " it needs a binding even thogbuh I don't use those, so just something that
 " wont be used
@@ -413,22 +400,18 @@ let g:UltiSnipsListSnippets="<C-D-Tab>" " this doesn't work but it won't complai
 let g:UltiSnipsJumpForwardTriger="<C-Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<C-S-Tab" " same
 " }}}
-
 " {{{ css folding
 au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
 " }}}
-
 " {{{ tagbar
 let g:tagbar_foldlevel = 0
 let g:tagbar_autoshowtag = 1
 " }}}
-
 " {{{ completion
 autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " }}}
-
 " {{{ vimshell
 let g:vimshell_enable_smart_case = 1
 nnoremap <leader>s :VimShellCurrentDir<CR>
@@ -443,7 +426,6 @@ function! s:vimshell_settings()
     setl omnifunc=vimshell#complete#omnifunc
 endfunction
 " }}}
-
 " {{{ Conque
 " let g:ConqueTerm_Color = 1
 " let g:ConqueTerm_ToggleKey = '<F8>'
