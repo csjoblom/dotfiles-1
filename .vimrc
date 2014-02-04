@@ -39,6 +39,7 @@ Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
+Bundle 'mattn/calendar-vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'vim-scripts/L9'
 Bundle 'vim-scripts/FuzzyFinder'
@@ -179,6 +180,7 @@ set completeopt=longest,menuone
 
 " key mappings
 let mapleader = ","
+let maplocalleader = "\\"
 let g:C_Ctrl_j = 'off' "disable global mapping for a linefeed
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>T :TagbarToggle<CR>
@@ -200,6 +202,13 @@ nnoremap [l :lprevious<CR>
 nnoremap ]l :lnext<CR>
 nnoremap [L :lfirst<CR>
 nnoremap ]L :llast<CR>
+
+" sessions
+let g:session_autosave = 'no'
+
+" orgmode
+let g:org_todo_keywords = [['TODO(t)', '|', 'WIP(w)', '|', 'DONE(d)']]
+autocmd FileType org nnoremap \| :VoomToggle org<CR>
 
 " airline
 let g:airline#extensions#branch#enabled = 1
@@ -365,8 +374,8 @@ let g:syntastic_python_flake8_args='--ignore=E123,E124,E126,E128,E201,E202,E203,
 " NERDTree
 let NERDTreeBookmarksFile="~/.vim/.cache/NERDTreeBookmarks"
 let NERDTreeIgnore = ['\.pyc$']
-nnoremap \ :NERDTreeToggle<CR>
-nnoremap <leader>\ :NERDTreeFind<CR>
+nnoremap \| :NERDTreeToggle<CR>
+nnoremap <leader>\| :NERDTreeFind<CR>
 
 " html indentation
 let g:html_indent_inctags = "html,body,head,tbody,li"
@@ -392,8 +401,8 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " vimshell
 let g:vimshell_enable_smart_case = 1
-nnoremap gt :VimShellCurrentDir<CR>
-nnoremap gT :VimShellBufferDir<CR>
+nnoremap <leader>s :VimShellCurrentDir<CR>
+nnoremap <leader>ss :VimShellBufferDir<CR>
 let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~").">", "\\[]()?! ")." "'
 let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
 au FileType vimshell call s:vimshell_settings()
