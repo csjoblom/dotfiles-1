@@ -224,6 +224,7 @@ autocmd FileType notes nnoremap \| :VoomToggle markdown<CR>
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tagbar#enabled = 0
 let g:airline_theme = 'base16'
 let g:airline_powerline_fonts = 0
