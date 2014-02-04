@@ -7,9 +7,10 @@ call vundle#rc()
 
 let s:use_ycm = 1
 
+" {{{ Bundles
+" general/filetype agnostic
 Bundle 'gmarik/vundle'
 
-" general/filetype agnostic
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'vim-scripts/scratch.vim'
 Bundle 'vim-scripts/DetectIndent'
@@ -75,15 +76,14 @@ if s:use_ycm
 else
     Bundle 'ervandew/supertab'
 endif
-
 Bundle 'davidhalter/jedi-vim'
 
 " note: both YouCompleteMe and vimproc.vim need to be compiled manually after installation
-
+" }}}
 
 filetype plugin indent on
 
-" functions
+" {{{ functions
 function! EnsureExists(path)
     if !isdirectory(expand(a:path))
         call mkdir(expand(a:path))
@@ -122,8 +122,9 @@ endfunc
 autocmd FileType python,javascript autocmd BufWritePre * :call StripTrailingWhitespace()
 
 call EnsureExists("$HOME/.vim/.cache")
+" }}}
 
-" general settings
+" {{{ general settings
 syntax on
 set encoding=utf-8
 set hidden
@@ -141,29 +142,33 @@ set directory=~/.vim/.cache/,~/.tmp,/var/tmp,/tmp
 set tags+=.tags
 set cursorline
 
-" folding
+" {{{ folding
 set foldmethod=syntax
 set foldlevel=99
+" }}}
 
-" wildmenu stuff
+" {{{ wildmenu stuff
 set wildmenu
 set wildmode=list:longest:full,full
 set wildignore+=*.so,*.swp,*.scssc,*.pyc
+" }}}
 
-" text
+" {{{ text
 set wrap
 set smartindent
 set expandtab
 set shiftwidth=4 ts=4 softtabstop=4
 set shiftround
 set textwidth=120
+" }}}
 
-" searching
+" {{{ searching
 set hlsearch
 set incsearch
 set smartcase
+" }}}
 
-" appearance
+" {{{ appearance
 set noshowmode
 set number
 set relativenumber
@@ -174,11 +179,13 @@ set background=dark
 let g:base16_variant = "eighties"
 let g:base16colorspace = "256"
 colorscheme base-16-custom
+" }}}
 
 " completion
 set completeopt=longest,menuone
+" }}}
 
-" key mappings
+" {{{ key mappings
 let mapleader = ","
 let maplocalleader = "\\"
 let g:C_Ctrl_j = 'off' "disable global mapping for a linefeed
@@ -192,8 +199,9 @@ nnoremap <silent> <leader>cc :call ToggleColorColumn()<CR>
 nnoremap gs :Scratch<CR>
 map <silent> <leader>k <plug>DashSearch
 map <silent> <leader>K <plug>DashGlobalSearch
+" }}}
 
-" navigation
+" {{{ navigation
 nnoremap [q :cprevious<CR>
 nnoremap ]q :cnext<CR>
 nnoremap [Q :cfirst<CR>
@@ -202,15 +210,18 @@ nnoremap [l :lprevious<CR>
 nnoremap ]l :lnext<CR>
 nnoremap [L :lfirst<CR>
 nnoremap ]L :llast<CR>
+" }}}
 
-" sessions
+" {{{ sessions
 let g:session_autosave = 'no'
+" }}}
 
-" orgmode
+" {{{ orgmode
 let g:org_todo_keywords = [['TODO(t)', '|', 'WIP(w)', '|', 'DONE(d)']]
 autocmd FileType org nnoremap \| :VoomToggle org<CR>
+" }}}
 
-" airline
+" {{{ airline
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
@@ -237,19 +248,22 @@ let g:airline_mode_map = {
       \ 'S'  : 'S',
       \ '' : 'S',
       \ }
+" }}}
 
-" easytags
+" {{{ easytags
 " let g:easytags_dynamic_files = 1
 " let g:easytags_auto_highlight = 0
 " let g:easytags_updatetime_warn = 0
-"
-" detect indent
+" }}}
+
+" {{{ detect indent
 " this doesn't really work as well as I wish it did, but it does something
 let g:detectindent_preferred_expandtab = 1
 let g:detectindent_preferred_indent = 4
 autocmd BufNewFile,BufRead * :DetectIndent
+" }}}
 
-" unite
+" {{{ unite
 let g:unite_data_directory="~/.vim/.cache/unite"
 let g:unite_source_rec_max_cache_files=5000
 let g:unite_source_file_mru_limit = 200
@@ -295,21 +309,26 @@ endfunction
 
 " Fuzzyfinder (until I get around to writing a buffertag source for unite)
 nnoremap <c-j>t :FufBufferTag<CR>
+" }}}
 
-" virtualenv
+" {{{ virtualenv
 let g:virtualenv_directory="~/.virtualenvs/"
 let g:virtualenv_auto_activate = 1
 let g:virtualenv_stl_format = '%n'
+" }}}
 
-" signify
+" {{{ signify
 let g:signify_sign_overwrite = 0
 let g:signify_update_on_focusgained = 1
 let g:signify_diffoptions = {'git': '--ignore-space-at-eol --ignore-blank-lines'}
 nnoremap <silent> <leader>S :SignifyToggle<CR>
+" }}}
 
-"emmet
+" {{{ emmet
 let g:user_emmet_leader_key = '<C-k>'
+" }}}
 
+" {{{ YCM/Supertab
 if s:use_ycm
     " ycm settings
     let g:ycm_seed_identifiers_with_syntax = 1
@@ -347,17 +366,20 @@ else
     let g:jedi#popup_select_first = 0
     let g:jedi#popup_on_dot = 0
 endif
+" }}}
 
-" jedi
+" {{{ jedi
 let g:jedi#show_call_signatures = "0"
 let g:jedi#use_tabs_not_buffers = 0
 au FileType python setl completeopt-=preview
+" }}}
 
-" python-syntax
+" {{{ python-syntax
 let python_highlight_all = 1
 let python_version_2 = 1 "default to py2 highlighting
+" }}}
 
-" syntastic settings
+" {{{ syntastic settings
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=1
@@ -370,36 +392,44 @@ let g:syntastic_mode_map = { 'mode': 'active',
             \ 'passive_filetypes': ['html', 'scss', 'sass'] }
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_flake8_args='--ignore=E123,E124,E126,E128,E201,E202,E203,E231,E261,E262,E401,E501'
+" }}}
 
-" NERDTree
+" {{{ NERDTree
 let NERDTreeBookmarksFile="~/.vim/.cache/NERDTreeBookmarks"
 let NERDTreeIgnore = ['\.pyc$']
 nnoremap \| :NERDTreeToggle<CR>
 nnoremap <leader>\| :NERDTreeFind<CR>
+" }}}
 
-" html indentation
+" {{{ html indentation
 let g:html_indent_inctags = "html,body,head,tbody,li"
+" }}}
 
-" utlisnips
+" {{{ utlisnips
 " it needs a binding even thogbuh I don't use those, so just something that
 " wont be used
 let g:UltiSnipsExpandTrigger="<C-Tab>"
 let g:UltiSnipsListSnippets="<C-D-Tab>" " this doesn't work but it won't complain
 let g:UltiSnipsJumpForwardTriger="<C-Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<C-S-Tab" " same
+" }}}
 
-" css folding
+" {{{ css folding
 au BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
+" }}}
 
-" tagbar
+" {{{ tagbar
 let g:tagbar_foldlevel = 0
 let g:tagbar_autoshowtag = 1
+" }}}
 
+" {{{ completion
 autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" }}}
 
-" vimshell
+" {{{ vimshell
 let g:vimshell_enable_smart_case = 1
 nnoremap <leader>s :VimShellCurrentDir<CR>
 nnoremap <leader>ss :VimShellBufferDir<CR>
@@ -412,11 +442,15 @@ function! s:vimshell_settings()
     setl nonumber
     setl omnifunc=vimshell#complete#omnifunc
 endfunction
+" }}}
 
-" Conque
+" {{{ Conque
 " let g:ConqueTerm_Color = 1
 " let g:ConqueTerm_ToggleKey = '<F8>'
 
 " autosave
 " set autowriteall
 " au FocusLost * silent! wa
+" }}}
+
+" vim: set ts=4 sw=4 expandtab fdm=marker foldlevel=0:
