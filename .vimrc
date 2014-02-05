@@ -47,9 +47,8 @@ Bundle 'vim-scripts/FuzzyFinder'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
 Bundle 'xolox/vim-notes'
-" Bundle 'xolox/vim-easytags'
-" Bundle 'jceb/vim-orgmode'
 Bundle 'vim-voom/VOoM'
+Bundle 'plasticboy/vim-markdown'
 
 " python
 Bundle 'jmcantrell/vim-virtualenv'
@@ -212,13 +211,8 @@ nnoremap ]L :llast<CR>
 " {{{ sessions
 let g:session_autosave = 'no'
 " }}}
-" " {{{ orgmode
-" let g:org_todo_keywords = [['TODO(t)', 'WIP(w)', 'DONE(d)']]
-" autocmd FileType org nnoremap \| :VoomToggle org<CR>
-" " }}}
 " {{{ notes
 let g:notes_directories = ['~/Documents/Notes']
-autocmd FileType notes nnoremap \| :VoomToggle markdown<CR>
 " }}}
 " {{{ airline
 let g:airline#extensions#branch#enabled = 1
@@ -248,11 +242,6 @@ let g:airline_mode_map = {
       \ 'S'  : 'S',
       \ '' : 'S',
       \ }
-" }}}
-" {{{ easytags
-" let g:easytags_dynamic_files = 1
-" let g:easytags_auto_highlight = 0
-" let g:easytags_updatetime_warn = 0
 " }}}
 " {{{ detect indent
 " this doesn't really work as well as I wish it did, but it does something

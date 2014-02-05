@@ -113,7 +113,7 @@ function prompt_agcustom_precmd {
 	}
 
 	# Virtualenv: current working virtualenv
-	function p_irtualenv() {
+	function p_virtualenv() {
 		local virtualenv_path="$python_info[virtualenv]"
 		if [[ -n $virtualenv_path ]]; then
 			p_segment blue black "$SEGMENT_SEPARATOR_ALT `basename $virtualenv_path`"
