@@ -159,6 +159,7 @@ set expandtab
 set sw=4 ts=8 softtabstop=4
 set shiftround
 set textwidth=120
+set formatoptions-=t
 " }}}
 
 " {{{ searching
@@ -194,7 +195,7 @@ nnoremap <leader>W :Kwbd<CR>
 nnoremap <silent> <leader><space> :nohlsearch<CR>
 nnoremap <silent> <leader>R :call RelativeNumberToggle()<CR>
 nnoremap <silent> <leader>cc :call ToggleColorColumn()<CR>
-nnoremap gs :Scratch<CR>
+nnoremap <F8> :Scratch<CR>
 map <silent> <leader>k <plug>DashSearch
 map <silent> <leader>K <plug>DashGlobalSearch
 " }}}
@@ -213,6 +214,7 @@ let g:session_autosave = 'no'
 " }}}
 " {{{ notes
 let g:notes_directories = ['~/Documents/Notes']
+let g:notes_suffix = '.md'
 " }}}
 " {{{ airline
 let g:airline#extensions#branch#enabled = 1
@@ -311,24 +313,25 @@ if s:use_ycm
     let g:ycm_use_ultisnips_completer = 0
     let g:ycm_add_preview_to_completeopt = 0
     let g:ycm_autoclose_preview_window_after_completion = 1
-    let g:ycm_collect_identifiers_from_tags_files = 1
+    let g:ycm_collect_identifiers_from_tags_files = 0
     let g:ycm_min_num_of_chars_for_completion = 2
     let g:ycm_filetype_blacklist = {
-                \ 'html' : 0,
-                \ 'htmldjango' : 0,
+                \ 'html' : 1,
+                \ 'htmldjango' : 1,
                 \ 'markdown' : 1,
                 \ 'text': 1,
                 \ 'note' : 1,
                 \ 'notes' : 1,
+                \ 'notes.txtfmt': 1,
                 \ 'unite': 1,
                 \ 'vimshell': 1,
-                \ 'conque': 1,
-                \ 'org': 1,
                 \}
     let g:ycm_key_detailed_diagnostics = ''
     let g:ycm_key_invoke_completion = '<C-Space>'
 
     let g:jedi#completions_enabled = 0
+    let g:jedi#auto_vim_configuration = 0
+
 else
     " supertab
     let g:SuperTabDefaultCompletionType = 'context'
@@ -347,7 +350,6 @@ endif
 " {{{ jedi
 let g:jedi#show_call_signatures = "0"
 let g:jedi#use_tabs_not_buffers = 0
-au FileType python setl completeopt-=preview
 " }}}
 " {{{ python-syntax
 let python_highlight_all = 1
@@ -398,8 +400,8 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " }}}
 " {{{ vimshell
 let g:vimshell_enable_smart_case = 1
-nnoremap <leader>s :VimShellCurrentDir<CR>
-nnoremap <leader>ss :VimShellBufferDir<CR>
+nnoremap <leader>v :VimShellCurrentDir<CR>
+nnoremap <leader>vv :VimShellBufferDir<CR>
 let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~").">", "\\[]()?! ")." "'
 let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
 au FileType vimshell call s:vimshell_settings()
