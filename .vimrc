@@ -33,6 +33,7 @@ Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/vimshell.vim'
 Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/neomru.vim'
 Bundle 'bling/vim-airline'
 Bundle 'mhinz/vim-signify'
 Bundle 'scrooloose/syntastic'
@@ -46,14 +47,17 @@ Bundle 'vim-scripts/L9'
 Bundle 'vim-scripts/FuzzyFinder'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-session'
-Bundle 'xolox/vim-notes'
+" Bundle 'xolox/vim-notes'
 Bundle 'vim-voom/VOoM'
-Bundle 'plasticboy/vim-markdown'
+Bundle 'jceb/vim-orgmode'
+" Bundle 'hsitz/VimOrganizer'
+Bundle 'gregsexton/gitv'
 
 " python
 Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'coaxmetal/python-syntax'
 Bundle 'ivanov/vim-ipython'
+Bundle 'davidhalter/jedi-vim'
 
 " go
 Bundle 'jnwhiteh/vim-golang'
@@ -76,7 +80,6 @@ if s:use_ycm
 else
     Bundle 'ervandew/supertab'
 endif
-Bundle 'davidhalter/jedi-vim'
 
 " note: both YouCompleteMe and vimproc.vim need to be compiled manually after installation
 " }}}
@@ -216,6 +219,11 @@ let g:session_autosave = 'no'
 let g:notes_directories = ['~/Documents/Notes']
 let g:notes_suffix = '.md'
 " }}}
+" {{{ org
+let g:org_todo_keywords = [['TODO(t)', 'WIP(w)', 'DONE(d)']]
+" au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
+" au BufEnter *.org call org#SetOrgFileType()
+" }}}
 " {{{ airline
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#virtualenv#enabled = 1
@@ -325,6 +333,7 @@ if s:use_ycm
                 \ 'notes.txtfmt': 1,
                 \ 'unite': 1,
                 \ 'vimshell': 1,
+                \ 'org': 1,
                 \}
     let g:ycm_key_detailed_diagnostics = ''
     let g:ycm_key_invoke_completion = '<C-Space>'
@@ -374,6 +383,9 @@ let NERDTreeBookmarksFile="~/.vim/.cache/NERDTreeBookmarks"
 let NERDTreeIgnore = ['\.pyc$']
 nnoremap \| :NERDTreeToggle<CR>
 nnoremap <leader>\| :NERDTreeFind<CR>
+" }}}
+" {{{ Utl
+let g:utl_cfg_hdl_scm_http = 'silent !open %u'
 " }}}
 " {{{ html indentation
 let g:html_indent_inctags = "html,body,head,tbody,li"
