@@ -22,3 +22,8 @@ source ~/.zsh/git-omz.zsh
 # source ~/.zsh/django.plugin.zsh
 
 bindkey '^R' history-incremental-search-backward
+
+# bind C-x f to filename completion
+zle -C complete-file menu-expand-or-complete _generic
+zstyle ':completion:complete-file:*' completer _files
+bindkey -M viins '^Xf'      complete-file
