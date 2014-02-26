@@ -27,3 +27,7 @@ bindkey '^R' history-incremental-search-backward
 zle -C complete-file menu-expand-or-complete _generic
 zstyle ':completion:complete-file:*' completer _files
 bindkey -M viins '^Xf'      complete-file
+
+# fallback to filename completion
+zstyle ':completion:*' completer _expand _complete _files \
+  _correct _approximate
