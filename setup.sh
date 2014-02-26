@@ -1,7 +1,6 @@
 #! /bin/sh
 
-
-$DOTFILES=`pwd`
+DOTFILES=`pwd`
 
 mkdir -p ~/.vim/bundle/
 
@@ -10,26 +9,25 @@ git clone git@github.com:sorin-ionescu/prezto.git ~/.zprezto
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
 # setup symlinks
-ln -s $DOTFILES/.vimrc ~/.vimrc
-ln -s $DOTFILES/.zshrc ~/.zshrc
-ln -s $DOTFILES/.zpreztorc ~/.zprestorc
-ln -s $DOTFILES/.zprofile ~/.zprofile
-ln -s $DOTFILES/.zshenv ~/.zshenv
-ln -s $DOTFILES/.zsh ~/.zsh
-ln -s $DOTFILES/.zlogin ~/.zlogin
-ln -s $DOTFILES/.zlogout ~/.zlogout
-ln -s $DOTFILES/.zsh/themes/prompt_agnoster_setup ~/.zprezto/modules/prompt/functions/prompt_agnoster_setup
-ln -s $DOTFILES/.agrc ~/.agrc
-ln -s $DOTFILES/.ackrc ~/.ackrc
-ln -s $DOTFILES/.jshintrc ~/.jshintrc
-ln -s $DOTFILES/.gitignore_global ~/.gitignore_global
-ln -s $DOTFILES/.inputrc ~/.inputrc
-ln -s $DOTFILES/.tmux ~/.tmux
-ln -s $DOTFILES/.tmux.conf ~/.tmux.conf
+ln -s -f $DOTFILES/.vimrc ~/.vimrc
+ln -s -f $DOTFILES/.zshrc ~/.zshrc
+ln -s -f $DOTFILES/.zpreztorc ~/.zprestorc
+ln -s -f $DOTFILES/.zprofile ~/.zprofile
+ln -s -f $DOTFILES/.zshenv ~/.zshenv
+ln -s -f $DOTFILES/.zsh ~/.zsh
+ln -s -f $DOTFILES/.zlogin ~/.zlogin
+ln -s -f $DOTFILES/.zlogout ~/.zlogout
+ln -s -f $DOTFILES/.agrc ~/.agrc
+ln -s -f $DOTFILES/.ackrc ~/.ackrc
+ln -s -f $DOTFILES/.jshintrc ~/.jshintrc
+ln -s -f $DOTFILES/.gitignore_global ~/.gitignore_global
+ln -s -f $DOTFILES/.inputrc ~/.inputrc
+ln -s -f $DOTFILES/.tmux ~/.tmux
+ln -s -f $DOTFILES/.tmux.conf ~/.tmux.conf
 
 # copy things
-cp $DOTFILES/.gitconfig ~/.gitconfig
-echo "github key must be manually set in ~/.gitconfig"
+# cp $DOTFILES/.gitconfig ~/.gitconfig
+# echo "github key must be manually set in ~/.gitconfig"
 
 # install bundle stuff
 # vim +BundleInstall +qall
