@@ -23,12 +23,13 @@ Bundle 'rking/ag.vim'
 " Bundle 'mileszs/ack.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'scrooloose/nerdtree'
+" Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-vinegar'
 Bundle 'coaxmetal/humblevundlebundle'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/vimshell.vim'
@@ -215,10 +216,6 @@ nnoremap ]L :llast<CR>
 " {{{ sessions
 let g:session_autosave = 'no'
 " }}}
-" {{{ notes
-let g:notes_directories = ['~/Documents/Notes']
-let g:notes_suffix = '.md'
-" }}}
 " {{{ org
 let g:org_todo_keywords = [['TODO(t)', 'WIP(w)', 'DONE(d)']]
 " au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
@@ -377,12 +374,6 @@ let g:syntastic_mode_map = { 'mode': 'active',
             \ 'passive_filetypes': ['html', 'scss', 'sass'] }
 let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_flake8_args='--ignore=E123,E124,E126,E128,E201,E202,E203,E231,E261,E262,E401,E501'
-" }}}
-" {{{ NERDTree
-let NERDTreeBookmarksFile="~/.vim/.cache/NERDTreeBookmarks"
-let NERDTreeIgnore = ['\.pyc$']
-nnoremap \| :NERDTreeToggle<CR>
-nnoremap <leader>\| :NERDTreeFind<CR>
 " }}}
 " {{{ Utl
 let g:utl_cfg_hdl_scm_http = 'silent !open %u'
