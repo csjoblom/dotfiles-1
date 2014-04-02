@@ -27,9 +27,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-speeddating'
-" Plugin 'tpope/vim-commentary'
-Plugin 'coaxmetal/vim-commentary'
 Plugin 'tpope/vim-vinegar'
+Plugin 'tomtom/tcomment_vim'
 Plugin 'coaxmetal/humblevundlebundle'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
@@ -218,8 +217,6 @@ let g:session_autosave = 'no'
 " }}}
 " {{{ org
 let g:org_todo_keywords = [['TODO(t)', 'WIP(w)', 'DONE(d)']]
-" au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
-" au BufEnter *.org call org#SetOrgFileType()
 " }}}
 " {{{ airline
 let g:airline#extensions#branch#enabled = 1
@@ -244,10 +241,8 @@ let g:airline_mode_map = {
       \ 'c'  : 'C',
       \ 'v'  : 'V',
       \ 'V'  : 'V',
-      \ '' : 'V',
       \ 's'  : 'S',
       \ 'S'  : 'S',
-      \ '' : 'S',
       \ }
 " }}}
 " {{{ unite
@@ -425,4 +420,4 @@ endfunction
 " au FocusLost * silent! wa
 " }}}
 
-" vim: set ts=4 sw=4 expandtab fdm=marker foldlevel=0:
+" vim: set ts=4 sw=4 expandtab fdm=marker:
