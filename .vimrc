@@ -420,4 +420,4 @@ endfunction
 " au FocusLost * silent! wa
 " }}}
 
-" vim: set ts=4 sw=4 expandtab fdm=marker:
+" vim: set ts=4 sw=4 expandtab fdm=marker foldlevel=0:
