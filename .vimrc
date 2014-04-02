@@ -8,78 +8,78 @@ call vundle#rc()
 
 let s:use_ycm = 1
 
-" {{{ Bundles
+" {{{ Plugins
 " general/filetype agnostic
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
-Bundle 'vim-scripts/matchit.zip'
-Bundle 'vim-scripts/scratch.vim'
-Bundle 'vim-scripts/utl.vim'
-Bundle 'vim-scripts/yaifa.vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'mbbill/undotree'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'rking/ag.vim'
-" Bundle 'mileszs/ack.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'terryma/vim-multiple-cursors'
-" Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-speeddating'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-vinegar'
-Bundle 'coaxmetal/humblevundlebundle'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'Shougo/vimshell.vim'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/neomru.vim'
-Bundle 'bling/vim-airline'
-Bundle 'mhinz/vim-signify'
-Bundle 'scrooloose/syntastic'
-Bundle 'embear/vim-localvimrc'
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
-Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
-Bundle 'vim-scripts/L9'
-Bundle 'vim-scripts/FuzzyFinder'
-Bundle 'xolox/vim-misc'
-Bundle 'xolox/vim-session'
-Bundle 'vim-voom/VOoM'
-Bundle 'jceb/vim-orgmode'
-" Bundle 'hsitz/VimOrganizer'
-Bundle 'gregsexton/gitv'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'vim-scripts/scratch.vim'
+Plugin 'vim-scripts/utl.vim'
+Plugin 'vim-scripts/yaifa.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'mbbill/undotree'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'rking/ag.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-speeddating'
+" Plugin 'tpope/vim-commentary'
+Plugin 'coaxmetal/vim-commentary'
+Plugin 'tpope/vim-vinegar'
+Plugin 'coaxmetal/humblevundlebundle'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/neomru.vim'
+Plugin 'tacroe/unite-mark'
+Plugin 'bling/vim-airline'
+Plugin 'mhinz/vim-signify'
+Plugin 'scrooloose/syntastic'
+Plugin 'embear/vim-localvimrc'
+Plugin 'rizzatti/funcoo.vim'
+Plugin 'rizzatti/dash.vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
+Plugin 'vim-voom/VOoM'
+Plugin 'jceb/vim-orgmode'
+Plugin 'gregsexton/gitv'
+Plugin 'L9'
+Plugin 'FuzzyFinder'
 
 " python
-Bundle 'jmcantrell/vim-virtualenv'
-Bundle 'coaxmetal/python-syntax'
-Bundle 'ivanov/vim-ipython'
-Bundle 'davidhalter/jedi-vim'
+Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'coaxmetal/python-syntax'
+Plugin 'ivanov/vim-ipython'
+Plugin 'davidhalter/jedi-vim'
 
 " go
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'Blackrush/vim-gocode'
+" Plugin 'jnwhiteh/vim-golang'
+" Plugin 'Blackrush/vim-gocode'
 
 " javascript
-Bundle 'pangloss/vim-javascript'
-Bundle 'marijnh/tern_for_vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'marijnh/tern_for_vim'
 
 " other
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'mattn/emmet-vim'
-Bundle 'gregsexton/MatchTag'
-Bundle 'vim-scripts/indenthtml.vim'
-" Bundle 'vim-scripts/csv.vim'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'gregsexton/MatchTag'
+Plugin 'vim-scripts/indenthtml.vim'
+" Plugin 'vim-scripts/csv.vim'
 
 " YCM/completion
 if s:use_ycm
-    Bundle 'Valloric/YouCompleteMe'
+    Plugin 'Valloric/YouCompleteMe'
 else
-    Bundle 'ervandew/supertab'
+    Plugin 'ervandew/supertab'
 endif
 
 " note: both YouCompleteMe and vimproc.vim need to be compiled manually after installation
@@ -280,6 +280,7 @@ nnoremap <C-j>r :Unite file_mru<CR>
 nnoremap <C-j>j :Unite jump<CR>
 nnoremap <C-j>g :Unite grep:.<CR>
 nnoremap <C-j>u :Unite ultisnips<CR>
+nnoremap <C-j>m :Unite mark<CR>
 
 au FileType unite call s:unite_buffer_settings()
 function! s:unite_buffer_settings()
