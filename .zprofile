@@ -47,6 +47,7 @@ typeset -gU cdpath fpath mailpath path
 path=(
   /usr/local/{bin,sbin}
   /usr/local/share/npm/bin
+  $HOME/go/bin
   $path
 )
 
@@ -78,4 +79,4 @@ if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
 
-export GIT_EDITOR='vim'
+export GOPATH="$HOME/go"
