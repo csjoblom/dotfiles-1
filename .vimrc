@@ -223,7 +223,7 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#tagbar#enabled = 0
+let g:airline#extensions#tagbar#enabled = 1
 let g:airline_theme = 'base16'
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ' '
@@ -314,7 +314,7 @@ if s:use_ycm
     let g:ycm_use_ultisnips_completer = 0
     let g:ycm_add_preview_to_completeopt = 0
     let g:ycm_autoclose_preview_window_after_completion = 1
-    let g:ycm_collect_identifiers_from_tags_files = 0
+    let g:ycm_collect_identifiers_from_tags_files = 1
     let g:ycm_min_num_of_chars_for_completion = 2
     let g:ycm_filetype_blacklist = {
                 \ 'html' : 1,
@@ -369,7 +369,7 @@ let g:syntastic_mode_map = { 'mode': 'active',
             \ 'active_filetypes': ['javascript', 'python'],
             \ 'passive_filetypes': ['html', 'scss', 'sass'] }
 let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args='--ignore=E123,E124,E126,E128,E201,E202,E203,E231,E261,E262,E401,E501'
+let g:syntastic_python_flake8_args='--ignore=E123,E124,E126,E128,E201,E202,E203,E231,E261,E262,E265,E401,E501'
 " }}}
 " {{{ Utl
 let g:utl_cfg_hdl_scm_http = 'silent !open %u'

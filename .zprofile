@@ -43,11 +43,13 @@ typeset -gU cdpath fpath mailpath path
 #   $cdpath
 # )
 
+export GOPATH="/usr/local/share/go"
+
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
   /usr/local/share/npm/bin
-  $HOME/go/bin
+  /usr/local/share/go/bin
   $path
 )
 
@@ -79,4 +81,3 @@ if [[ ! -d "$TMPPREFIX" ]]; then
   mkdir -p "$TMPPREFIX"
 fi
 
-export GOPATH="$HOME/go"
