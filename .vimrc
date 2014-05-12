@@ -3,7 +3,7 @@ filetype off
 
 " {{{ vundle
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 " }}}
 
 let s:use_ycm = 1
@@ -53,9 +53,15 @@ Plugin 'gregsexton/gitv'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
 
+" YCM/completion
+if s:use_ycm
+    Plugin 'Valloric/YouCompleteMe'
+else
+    Plugin 'ervandew/supertab'
+endif
+
 " python
 Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'coaxmetal/python-syntax'
 Plugin 'ivanov/vim-ipython'
 Plugin 'davidhalter/jedi-vim'
 
@@ -74,14 +80,8 @@ Plugin 'gregsexton/MatchTag'
 Plugin 'vim-scripts/indenthtml.vim'
 " Plugin 'vim-scripts/csv.vim'
 
-" YCM/completion
-if s:use_ycm
-    Plugin 'Valloric/YouCompleteMe'
-else
-    Plugin 'ervandew/supertab'
-endif
-
 " note: both YouCompleteMe and vimproc.vim need to be compiled manually after installation
+call vundle#end()
 " }}}
 
 filetype plugin indent on
@@ -305,7 +305,7 @@ let g:signify_diffoptions = {'git': '--ignore-space-at-eol --ignore-blank-lines'
 nnoremap <silent> <leader>S :SignifyToggle<CR>
 " }}}
 " {{{ emmet
-let g:user_emmet_leader_key = '<C-k>'
+let g:user_emmet_leader_key = '<C-q>'
 " }}}
 " {{{ YCM/Supertab
 if s:use_ycm
@@ -354,8 +354,8 @@ let g:jedi#show_call_signatures = "0"
 let g:jedi#use_tabs_not_buffers = 0
 " }}}
 " {{{ python-syntax
-let python_highlight_all = 1
-let python_version_2 = 1 "default to py2 highlighting
+let g:python_highlight_all = 1
+let g:python_version_2 = 1 "default to py2 highlighting
 " }}}
 " {{{ syntastic settings
 let g:syntastic_always_populate_loc_list=1
