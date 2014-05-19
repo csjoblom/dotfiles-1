@@ -36,7 +36,8 @@ Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/neomru.vim'
 Plugin 'tacroe/unite-mark'
 Plugin 'bling/vim-airline'
-Plugin 'mhinz/vim-signify'
+" Plugin 'mhinz/vim-signify'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
 Plugin 'embear/vim-localvimrc'
 Plugin 'rizzatti/funcoo.vim'
@@ -298,11 +299,13 @@ let g:virtualenv_directory="~/.virtualenvs/"
 let g:virtualenv_auto_activate = 1
 let g:virtualenv_stl_format = '%n'
 " }}}
-" {{{ signify
+" {{{ signify/gitgutter
 let g:signify_sign_overwrite = 0
 let g:signify_update_on_focusgained = 1
 let g:signify_diffoptions = {'git': '--ignore-space-at-eol --ignore-blank-lines'}
 nnoremap <silent> <leader>S :SignifyToggle<CR>
+
+let g:gitgutter_diff_args = '--ignore-space-at-eol --ignore-blank-lines'
 " }}}
 " {{{ emmet
 let g:user_emmet_leader_key = '<C-q>'
