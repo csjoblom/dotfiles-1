@@ -36,7 +36,6 @@ Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/neomru.vim'
 Plugin 'tacroe/unite-mark'
 Plugin 'bling/vim-airline'
-" Plugin 'mhinz/vim-signify'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
 Plugin 'embear/vim-localvimrc'
@@ -71,8 +70,10 @@ Plugin 'davidhalter/jedi-vim'
 " Plugin 'Blackrush/vim-gocode'
 
 " javascript
-Plugin 'pangloss/vim-javascript'
+" Plugin 'pangloss/vim-javascript'
 Plugin 'marijnh/tern_for_vim'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'vim-scripts/JavaScript-Indent'
 
 " other
 Plugin 'cakebaker/scss-syntax.vim'
@@ -224,7 +225,7 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#virtualenv#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#tagbar#enabled = 0
 let g:airline_theme = 'base16'
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = ' '
@@ -422,5 +423,9 @@ endfunction
 " set autowriteall
 " au FocusLost * silent! wa
 " }}}
+" {{{ javascript
+au FileType javascript call JavaScriptFold()
+" }}}
+
 
 " vim: set ts=4 sw=4 expandtab fdm=marker foldlevel=0:
