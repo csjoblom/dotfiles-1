@@ -36,7 +36,8 @@ Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/neomru.vim'
 Plugin 'tacroe/unite-mark'
 Plugin 'bling/vim-airline'
-Plugin 'airblade/vim-gitgutter'
+" Plugin 'airblade/vim-gitgutter'
+Plugin 'mhinz/vim-signify'
 Plugin 'scrooloose/syntastic'
 Plugin 'embear/vim-localvimrc'
 Plugin 'rizzatti/funcoo.vim'
@@ -64,10 +65,11 @@ endif
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'ivanov/vim-ipython'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'tmhedberg/SimpylFold'
 
 " go
-" Plugin 'jnwhiteh/vim-golang'
-" Plugin 'Blackrush/vim-gocode'
+Plugin 'jnwhiteh/vim-golang'
+Plugin 'nsf/gocode', {'rtp': 'vim/'}'
 
 " javascript
 " Plugin 'pangloss/vim-javascript'
@@ -253,10 +255,13 @@ let g:unite_source_rec_max_cache_files=5000
 let g:unite_source_file_mru_limit = 200
 let g:unite_source_history_yank_enable = 1
 let g:unite_prompt='» '
-let g:unite_source_grep_command='ag'
-let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
+let g:unite_source_grep_default_opts='--nocolor --nogroup'
 let g:unite_source_grep_recursive_opt=''
-let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
+if executable('pt')
+    let g:unite_source_rec_async_command='pt --nocolor --nogroup -l ""'
+    let g:unite_source_grep_command='pt'
+endif
+
 call unite#set_profile('files', 'smartcase', 1)
 call unite#set_profile('files', 'ignorecase', 1)
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
