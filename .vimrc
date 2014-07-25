@@ -436,9 +436,6 @@ endfunction
 " set autowriteall
 " au FocusLost * silent! wa
 " }}}
-" {{{ javascript
-au FileType javascript call JavaScriptFold()
-" }}}
 
 
 " vim: set ts=4 sw=4 expandtab fdm=marker foldlevel=0:
