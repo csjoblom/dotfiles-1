@@ -53,8 +53,9 @@ Plugin 'jceb/vim-orgmode'
 Plugin 'gregsexton/gitv'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
+Plugin 'Konfekt/FastFold'
 
-" YCM/completion
+" YCM/completio
 if s:use_ycm
     Plugin 'Valloric/YouCompleteMe'
 else
@@ -221,8 +222,8 @@ nnoremap ]L :llast<CR>
 " Don't screw up folds when inserting text that might affect them, until
 " leaving insert mode. Foldmethod is local to the window. Protect against
 " screwing up folding when switching between windows.
-autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
-autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+" autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
+" autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 " }}}
 " {{{ sessions
 let g:session_autosave = 'no'
@@ -347,6 +348,7 @@ if s:use_ycm
                 \}
     let g:ycm_key_detailed_diagnostics = ''
     let g:ycm_key_invoke_completion = '<C-Space>'
+    let g:ycm_show_diagnostics_ui = 0
 
     let g:jedi#completions_enabled = 0
     let g:jedi#auto_vim_configuration = 0
@@ -435,6 +437,10 @@ endfunction
 " autosave
 " set autowriteall
 " au FocusLost * silent! wa
+" }}}
+" {{{ fastfold
+let g:fastfold_togglehook = 1
+let g:mapsuffixes = ['x', 'X']
 " }}}
 
 
