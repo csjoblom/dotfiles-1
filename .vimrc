@@ -1,7 +1,6 @@
+" {{{ vundle
 set nocompatible
 filetype off
-
-" {{{ vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 " }}}
@@ -54,6 +53,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
 Plugin 'Konfekt/FastFold'
+Plugin 'Konfekt/restore_view'
 
 " YCM/completio
 if s:use_ycm
@@ -127,11 +127,10 @@ function! ToggleColorColumn()
 endfunc
 
 " strip trailing whitespace on save
-autocmd FileType python,javascript autocmd BufWritePre * :call StripTrailingWhitespace()
-
-
-call EnsureExists("$HOME/.vim/.cache")
+autocmd FileType python,javascript autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+call EnsureExists("$HOME/.vim/.cache") 
 " }}}
+
 " {{{ general settings
 syntax on
 set encoding=utf-8
@@ -380,6 +379,7 @@ let g:python_version_2 = 1 "default to py2 highlighting
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=1
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_style_warning_symbol='⚠'
