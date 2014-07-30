@@ -127,7 +127,7 @@ function! ToggleColorColumn()
 endfunc
 
 " strip trailing whitespace on save
-autocmd FileType python,javascript autocmd BufWritePre <buffer> call StripTrailingWhitespace()
+autocmd BufWritePre *.py,*.js call StripTrailingWhitespace()
 call EnsureExists("$HOME/.vim/.cache") 
 " }}}
 
