@@ -73,10 +73,7 @@ Plugin 'jnwhiteh/vim-golang'
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
 
 " javascript
-" Plugin 'pangloss/vim-javascript'
 Plugin 'marijnh/tern_for_vim'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'vim-scripts/JavaScript-Indent'
 
 " other
 Plugin 'cakebaker/scss-syntax.vim'
@@ -127,7 +124,6 @@ function! ToggleColorColumn()
 endfunc
 
 " strip trailing whitespace on save
-autocmd BufWritePre *.py,*.js call StripTrailingWhitespace()
 call EnsureExists("$HOME/.vim/.cache") 
 " }}}
 
@@ -441,6 +437,10 @@ endfunction
 " {{{ fastfold
 let g:fastfold_togglehook = 1
 let g:mapsuffixes = ['x', 'X']
+" }}}
+" {{{ additional autocmds
+autocmd BufWritePre *.py,*.js call StripTrailingWhitespace()
+" autocmd FileType javascript call JavaScriptFold()
 " }}}
 
 
