@@ -265,9 +265,9 @@ let g:unite_source_history_yank_enable = 1
 let g:unite_prompt='» '
 let g:unite_source_grep_default_opts='--nocolor --nogroup'
 let g:unite_source_grep_recursive_opt=''
-if executable('pt')
-    let g:unite_source_rec_async_command='pt --nocolor --nogroup -l ""'
-    let g:unite_source_grep_command='pt'
+if executable('ag')
+    let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".git" -g ""'
+    let g:unite_source_grep_command='ag'
 endif
 
 call unite#set_profile('files', 'smartcase', 1)
