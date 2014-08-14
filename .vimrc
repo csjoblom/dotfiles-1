@@ -53,9 +53,9 @@ Plugin 'gregsexton/gitv'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
 Plugin 'Konfekt/FastFold'
-Plugin 'Konfekt/restore_view'
+"Plugin 'Konfekt/restore_view'
 
-" YCM/completio
+" YCM/completion
 if s:use_ycm
     Plugin 'Valloric/YouCompleteMe'
 else
@@ -73,6 +73,9 @@ Plugin 'jnwhiteh/vim-golang'
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
 
 " javascript
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'vim-scripts/JavaScript-Indent'
+" Plugin 'pangloss/vim-javascript'
 Plugin 'marijnh/tern_for_vim'
 
 " other
@@ -262,7 +265,7 @@ let g:unite_prompt='» '
 let g:unite_source_grep_default_opts='--nocolor --nogroup'
 let g:unite_source_grep_recursive_opt=''
 if executable('ag')
-    let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".git" -g ""'
+    let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
     let g:unite_source_grep_command='ag'
 endif
 
