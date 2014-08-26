@@ -60,12 +60,12 @@ if s:use_ycm
     Plugin 'Valloric/YouCompleteMe'
 else
     Plugin 'ervandew/supertab'
+    Plugin 'davidhalter/jedi-vim'
 endif
 
 " python
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'ivanov/vim-ipython'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'tmhedberg/SimpylFold'
 
 " go
@@ -347,10 +347,8 @@ if s:use_ycm
     let g:ycm_key_detailed_diagnostics = ''
     let g:ycm_key_invoke_completion = '<C-Space>'
     let g:ycm_show_diagnostics_ui = 0
-
-    let g:jedi#completions_enabled = 0
-    let g:jedi#auto_vim_configuration = 0
-
+    nnoremap <leader>g :YcmCompleter GoTo<CR>
+    nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
 else
     " supertab
     let g:SuperTabDefaultCompletionType = 'context'
