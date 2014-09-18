@@ -269,12 +269,14 @@ if executable('ag')
     let g:unite_source_grep_command='ag'
 endif
 
-call unite#set_profile('files', 'smartcase', 1)
-call unite#set_profile('files', 'ignorecase', 1)
+call unite#custom#profile('files', 'context.smartcase', 1)
+call unite#custom#profile('files', 'context.ignorecase', 1)
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
-call unite#custom_source('file_rec,file_rec/async', 'filters',
-            \ ['converter_relative_word', 'matcher_default', 'converter_relative_abbr'])
+call unite#custom_source('file_rec,file_rec/async', 'matchers',
+            \ ['converter_relative_word', 'matcher_default'])
+call unite#custom_source('file_rec,file_rec/async', 'converters',
+            \ 'converter_relative_abbr')
 call unite#custom_source('file_rec,file_rec/async', 'sorters', ['sorter_rank', 'sorter_selecta'])
 
 nnoremap <leader>b :Unite buffer<CR>
