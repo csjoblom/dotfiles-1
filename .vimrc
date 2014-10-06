@@ -317,6 +317,7 @@ let g:virtualenv_stl_format = '%n'
 let g:signify_sign_overwrite = 0
 let g:signify_update_on_focusgained = 1
 let g:signify_diffoptions = {'git': '--ignore-space-at-eol --ignore-blank-lines'}
+let g:signify_vcs_list = ['git']
 nnoremap <silent> <leader>S :SignifyToggle<CR>
 
 let g:gitgutter_diff_args = '--ignore-space-at-eol --ignore-blank-lines'
