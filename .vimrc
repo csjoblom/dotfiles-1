@@ -12,7 +12,6 @@ let s:use_ycm = 1
 Plugin 'gmarik/vundle'
 
 Plugin 'vim-scripts/matchit.zip'
-Plugin 'vim-scripts/scratch.vim'
 Plugin 'vim-scripts/utl.vim'
 Plugin 'vim-scripts/yaifa.vim'
 Plugin 'Raimondi/delimitMate'
@@ -30,12 +29,10 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'coaxmetal/humblevundlebundle'
 Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/neomru.vim'
 Plugin 'tacroe/unite-mark'
 Plugin 'bling/vim-airline'
-" Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-signify'
 Plugin 'scrooloose/syntastic'
 Plugin 'embear/vim-localvimrc'
@@ -47,13 +44,11 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
-Plugin 'vim-voom/VOoM'
 Plugin 'jceb/vim-orgmode'
 Plugin 'gregsexton/gitv'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
 Plugin 'Konfekt/FastFold'
-"Plugin 'Konfekt/restore_view'
 
 " YCM/completion
 if s:use_ycm
@@ -68,14 +63,9 @@ Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'ivanov/vim-ipython'
 Plugin 'tmhedberg/SimpylFold'
 
-" go
-Plugin 'jnwhiteh/vim-golang'
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
-
 " javascript
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'vim-scripts/JavaScript-Indent'
-" Plugin 'pangloss/vim-javascript'
 Plugin 'marijnh/tern_for_vim'
 
 " other
@@ -83,7 +73,6 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'gregsexton/MatchTag'
 Plugin 'vim-scripts/indenthtml.vim'
-" Plugin 'vim-scripts/csv.vim'
 
 " note: both YouCompleteMe and vimproc.vim need to be compiled manually after installation
 call vundle#end()
@@ -202,7 +191,6 @@ nnoremap <leader>W :Kwbd<CR>
 nnoremap <silent> <leader><space> :nohlsearch<CR>
 nnoremap <silent> <leader>R :call RelativeNumberToggle()<CR>
 nnoremap <silent> <leader>cc :call ToggleColorColumn()<CR>
-nnoremap <F8> :Scratch<CR>
 map <silent> <leader>k <plug>DashSearch
 map <silent> <leader>K <plug>DashGlobalSearch
 " }}}
@@ -215,13 +203,6 @@ nnoremap [l :lprevious<CR>
 nnoremap ]l :lnext<CR>
 nnoremap [L :lfirst<CR>
 nnoremap ]L :llast<CR>
-" }}}
-" {{{ fix some folding shit
-" Don't screw up folds when inserting text that might affect them, until
-" leaving insert mode. Foldmethod is local to the window. Protect against
-" screwing up folding when switching between windows.
-" autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
-" autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 " }}}
 " {{{ sessions
 let g:session_autosave = 'no'
@@ -414,28 +395,6 @@ let g:tagbar_autoshowtag = 1
 autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" }}}
-" {{{ vimshell
-let g:vimshell_enable_smart_case = 1
-nnoremap <leader>v :VimShellCurrentDir<CR>
-nnoremap <leader>vv :VimShellBufferDir<CR>
-let g:vimshell_prompt_expr = 'escape(fnamemodify(getcwd(), ":~").">", "\\[]()?! ")." "'
-let g:vimshell_prompt_pattern = '^\%(\f\|\\.\)\+> '
-au FileType vimshell call s:vimshell_settings()
-function! s:vimshell_settings()
-    call vimshell#altercmd#define('g', 'git')
-    setl norelativenumber
-    setl nonumber
-    setl omnifunc=vimshell#complete#omnifunc
-endfunction
-" }}}
-" {{{ Conque
-" let g:ConqueTerm_Color = 1
-" let g:ConqueTerm_ToggleKey = '<F8>'
-
-" autosave
-" set autowriteall
-" au FocusLost * silent! wa
 " }}}
 " {{{ fastfold
 let g:fastfold_togglehook = 1
