@@ -162,6 +162,7 @@ set formatoptions-=t
 set hlsearch
 set incsearch
 set smartcase
+autocmd QuickFixCmdPost *grep* cwindow " open qf on grep
 " }}}
 
 " {{{ appearance
