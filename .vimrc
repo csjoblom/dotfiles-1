@@ -170,7 +170,7 @@ set noshowmode
 set number
 set relativenumber
 set laststatus=2
-set guifont=meslo\ lg\ s\ for\ powerline:h12
+set guifont=Inconsolata-dz\ for\ Powerline:h12
 set t_Co=256
 set background=dark
 let g:base16_variant = "eighties"
@@ -244,11 +244,12 @@ let g:unite_source_rec_max_cache_files=5000
 let g:unite_source_file_mru_limit = 200
 let g:unite_source_history_yank_enable = 1
 let g:unite_prompt='» '
-let g:unite_source_grep_default_opts='--nocolor --nogroup'
-let g:unite_source_grep_recursive_opt=''
-if executable('ag')
-    let g:unite_source_rec_async_command='ag --nocolor --nogroup -g ""'
-    let g:unite_source_grep_command='ag'
+if executable('pt')
+    let g:unite_source_grep_default_opts='--nocolor --nogroup'
+    let g:unite_source_grep_recursive_opt=''
+    let g:unite_source_grep_encoding = 'utf-8'
+    let g:unite_source_rec_async_command='pt --nocolor --nogroup -l ""'
+    let g:unite_source_grep_command='pt'
 endif
 
 call unite#custom#profile('files', 'context.smartcase', 1)
@@ -263,7 +264,7 @@ call unite#custom_source('file_rec,file_rec/async', 'sorters', ['sorter_rank', '
 
 nnoremap <leader>b :Unite buffer<CR>
 nnoremap <C-p> :Unite -start-insert file_rec/async<CR>
-nnoremap <C-j>p :Unite -start-insert file_rec/async<CR>
+nnoremap <C-j>p :Unite file_rec/async<CR>
 nnoremap <C-j>y :Unite history/yank<CR>
 nnoremap <C-j>b :Unite buffer<CR>
 nnoremap <C-j>f :Unite file file/new<CR>
