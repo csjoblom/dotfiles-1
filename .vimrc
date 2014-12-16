@@ -73,6 +73,7 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'gregsexton/MatchTag'
 Plugin 'vim-scripts/indenthtml.vim'
+Plugin 'chrisbra/csv.vim'
 
 " note: both YouCompleteMe and vimproc.vim need to be compiled manually after installation
 call vundle#end()
@@ -399,8 +400,7 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " }}}
 " {{{ fastfold
-let g:fastfold_togglehook = 1
-let g:mapsuffixes = ['x', 'X']
+let g:fastfold_togglehook = 0
 " }}}
 " {{{ additional autocmds
 autocmd BufWritePre *.py,*.js call StripTrailingWhitespace()
